@@ -21,7 +21,7 @@ export default function SessionCard({ session }: SessionCardProps) {
 
   return (
     <Card isPressable onPress={navigateToSession} className="group transition-all hover:scale-[1.02]">
-      <CardBody className="overflow-visible py-2 grid grid-cols-1 md:grid-cols-2 gap-2">
+      <CardBody className="overflow-visible p-2 grid grid-cols-1 md:grid-cols-2 gap-2">
         <div className="">
           <h3 className="text-lg font-semibold">{session.title}</h3>
           <p className="text-sm text-zinc-400">{session.artist.name}</p>

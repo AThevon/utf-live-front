@@ -16,6 +16,7 @@ const navlinks = [
   { href: '/', text: 'Accueil' },
   { href: '/live-sessions', text: 'Live Sessions' },
   { href: '/artists', text: 'Artistes' },
+  { href: '/about', text: 'à propos' },
 ];
 
 export default function Header() {
@@ -24,7 +25,7 @@ export default function Header() {
   return (
     <Navbar shouldHideOnScroll maxWidth="full" isBlurred>
       <NavbarBrand>
-        <Logo />
+        <Logo className="w-8 h-8" />
       </NavbarBrand>
 
       <NavbarContent className="hidden sm:flex gap-4 relative" justify="center">
@@ -35,7 +36,7 @@ export default function Header() {
               <Link
                 href={href}
                 color={isActive ? 'primary' : 'foreground'}
-                className="relative z-10"
+                className="relative z-10 capitalize"
               >
                 {text}
               </Link>
