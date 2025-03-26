@@ -13,7 +13,7 @@ import Logo from './Logo';
 
 const navlinks = [
   { href: '/', text: 'Accueil' },
-  { href: '/sessions', text: 'Sessions' },
+  { href: '/live-sessions', text: 'Live Sessions' },
   { href: '/artists', text: 'Artistes' },
 ];
 
@@ -42,7 +42,13 @@ export default function Header() {
 
       <NavbarContent justify="end">
         <NavbarItem>
-          <Button as={Link} color="primary" href="/contact" variant="flat">
+          <Button
+            as={Link}
+            color="primary"
+            href="/contact"
+            variant={pathname === '/contact' ? 'flat' : 'bordered'}
+            disabled={pathname === '/contact'}
+          >
             Nous contacter
           </Button>
         </NavbarItem>

@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function Logo() {
   return (
     <Image
-      src="/logo.png"
+      src="/utf-logo.png"
       alt="Logo"
       width={36}
       height={36}

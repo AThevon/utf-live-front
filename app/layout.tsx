@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import Header from "@/components/Header";
+import PageTransition from "@/components/PageTransition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,11 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} text-foreground bg-background`}>
+    <html lang="fr">
+      <body className={`${geistSans.variable} ${geistMono.variable} text-foreground bg-background min-h-screen`}>
         <Providers>
           <Header />
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
         </Providers>
       </body>
     </html>

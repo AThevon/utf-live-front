@@ -1,72 +1,43 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { Card, CardHeader, CardBody, CardFooter } from '@heroui/react';
+import { Card, CardBody, Image, CardFooter } from '@heroui/react';
+import { useRouter } from 'next/navigation';
+import type { ArtistList } from '@/types';
 
 
 type ArtistCardProps = {
-  artist: {
-    id: number;
-    name: string;
-    slug: string;
-    bio: string;
-    images: {
-      url: string;
-      alt: string;
-    }[];
-    socials: {
-      name: string;
-      slug: string;
-      icon_url: string;
-      url: string;
-    }[];
-  };
+  artist: ArtistList;
 };
 
 export default function ArtistCard({ artist }: ArtistCardProps) {
+  const router = useRouter();
+
   if (!artist) return
+
+  function navigateToArtist() {
+    setTimeout(() => {
+      router.push(`/artists/${artist.slug}`);
+    }, 300);
+  }
+
   return (
-    <Card className="hover:shadow-lg transition-shadow h-full flex flex-col">
-      <Link key={artist.id} href={`/artists/${artist.slug}`} className="group">
-        <CardHeader className="p-0 overflow-hidden rounded-t-xl">
-          {artist.images[0]?.url && (
-            <Image
-              src={artist.images[0].url}
-              alt={artist.images[0].alt}
-              width={400}
-              height={400}
-              className="w-full h-64 object-cover transition-transform group-hover:scale-105"
-            />
-          )}
-        </CardHeader>
-
-        <CardBody className="flex flex-col gap-2 flex-1">
-          <h2 className="text-lg font-semibold">{artist.name}</h2>
-          <p className="text-sm text-muted-foreground line-clamp-3">{artist.bio}</p>
-        </CardBody>
-      </Link>
-
-      <CardFooter className="mt-auto">
-        <div className="flex gap-3">
-          {artist.socials.map((social) => (
-            <Link
-              key={social.slug}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={social.name}
-            >
-              <Image
-                src={social.icon_url}
-                alt={social.name}
-                width={24}
-                height={24}
-                className="w-6 h-6"
-              />
-            </Link>
-          ))}
-        </div>
+    <Card
+      className="group hover:shadow-lg transition-shadow flex flex-col"
+      isPressable
+      isFooterBlurred
+      onPress={navigateToArtist}
+    >
+      <CardBody className="overflow-hidden p-0">
+        <Image
+          removeWrapper
+          src={artist.profile_image}
+          alt={artist.name}
+          className="w-full h-full object-cover rounded-none z-0 transition-transform group-hover:scale-105"
+        />
+      </CardBody>
+      <CardFooter className="absolute z-10 bottom-0 bg-transparent flex flex-col gap-2 p-4">
+        <h2 className="text-xl font-semibold">{artist.name}</h2>
+        {/* <p className="text-sm text-muted-foreground line-clamp-3">{artist.bio}</p> */}
       </CardFooter>
     </Card>
   );

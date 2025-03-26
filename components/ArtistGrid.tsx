@@ -1,30 +1,16 @@
-'use client';
-
+import type { ArtistList } from '@/types';
 import ArtistCard from './ArtistCard';
 
-const mockArtists = [
-  {
-    name: 'SOA',
-    photo: '/artists/soa.jpg',
-    href: '/artists/soa',
-  },
-  {
-    name: 'Naya',
-    photo: '/artists/naya.jpg',
-    href: '/artists/naya',
-  },
-  {
-    name: 'JAYE',
-    photo: '/artists/jaye.jpg',
-    href: '/artists/jaye',
-  },
-];
+type ArtistGridProps = {
+  artists: ArtistList[];
+};
 
-export default function ArtistGrid() {
+export default function ArtistGrid({ artists }: ArtistGridProps) {
+  if (!artists) return;
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-      {mockArtists.map((artist) => (
-        <ArtistCard key={artist.href} {...artist} />
+      {artists.map((artist) => (
+        <ArtistCard key={artist.id} artist={artist} />
       ))}
     </div>
   );
