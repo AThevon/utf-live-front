@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@heroui/react": "^2.7.5",
+    "embla-carousel-auto-scroll": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
     "framer-motion": "^12.5.0",
     "next": "15.2.3",
     "react": "^19.0.0",

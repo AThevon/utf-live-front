@@ -1,7 +1,7 @@
 import HeroSection from '@/components/HeroSection';
-import SessionGrid from '@/components/SessionGrid';
 import CTA from '@/components/CTA';
 import { getLatestLiveSession } from '@/lib/api/liveSessions';
+import SessionGridLatest from '@/components/SessionGridLatest';
 
 export default async function Home() {
 
@@ -12,7 +12,7 @@ export default async function Home() {
       <HeroSection />
       <section className="px-6">
         <h2 className="text-3xl font-bold mb-4">Nouvelles sessions</h2>
-        <SessionGrid sessions={latestLiveSessions} />
+        <SessionGridLatest sessions={latestLiveSessions} />
       </section>
       <section className="px-6">
         <h2 className="text-3xl font-bold mb-4">Artistes à découvrir</h2>

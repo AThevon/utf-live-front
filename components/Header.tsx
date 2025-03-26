@@ -9,6 +9,7 @@ import {
   Link,
   Button,
 } from '@heroui/react';
+import { motion } from 'framer-motion';
 import Logo from './Logo';
 
 const navlinks = [
@@ -21,23 +22,33 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <Navbar shouldHideOnScroll maxWidth='full'>
+    <Navbar shouldHideOnScroll maxWidth="full" isBlurred>
       <NavbarBrand>
         <Logo />
       </NavbarBrand>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {navlinks.map(({ href, text }) => (
-          <NavbarItem key={href} isActive={pathname === href}>
-            <Link
-              color={pathname === href ? 'primary' : 'foreground'}
-              href={href}
-              aria-current={pathname === href ? 'page' : undefined}
-            >
-              {text}
-            </Link>
-          </NavbarItem>
-        ))}
+      <NavbarContent className="hidden sm:flex gap-4 relative" justify="center">
+        {navlinks.map(({ href, text }) => {
+          const isActive = pathname === href;
+          return (
+            <NavbarItem key={href} className="relative">
+              <Link
+                href={href}
+                color={isActive ? 'primary' : 'foreground'}
+                className="relative z-10"
+              >
+                {text}
+              </Link>
+              {isActive && (
+                <motion.div
+                  layoutId="underline"
+                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary rounded"
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                />
+              )}
+            </NavbarItem>
+          );
+        })}
       </NavbarContent>
 
       <NavbarContent justify="end">

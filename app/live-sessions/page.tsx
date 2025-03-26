@@ -1,7 +1,7 @@
 import SessionGrid from '@/components/SessionGrid';
 import { getAllLiveSessions } from '@/lib/api/liveSessions';
 
-export default async function Sessions() {
+export default async function LiveSessions() {
   const liveSessions = await getAllLiveSessions();
   return (
     <div className='px-20'>
