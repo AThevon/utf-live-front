@@ -6,7 +6,7 @@ import { ReactNode } from 'react'
 export default function PageTransition({ children }: { children: ReactNode }) {
   return (
     <motion.main
-    className='overflow-x-hidden min-h-[calc(100vh-6rem)]'
+      className='overflow-x-hidden min-h-screen-minus-navbar'
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -16 }}

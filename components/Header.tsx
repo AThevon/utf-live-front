@@ -11,6 +11,7 @@ import {
 } from '@heroui/react';
 import { motion } from 'framer-motion';
 import Logo from './Logo';
+import { Send } from 'lucide-react';
 
 const navlinks = [
   { href: '/', text: 'Accueil' },
@@ -56,10 +57,11 @@ export default function Header() {
         <NavbarItem>
           <Button
             as={Link}
+            startContent={<Send className={`w-5 h-5 group-hover/btn:rotate-45 transition-all ${pathname === "/contact" && 'rotate-45'}`} />}
             color="primary"
             href="/contact"
-            variant={pathname === '/contact' ? 'flat' : 'bordered'}
-            disabled={pathname === '/contact'}
+            variant="solid"
+            className="group/btn text-black"
           >
             Nous contacter
           </Button>

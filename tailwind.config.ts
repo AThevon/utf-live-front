@@ -8,7 +8,14 @@ const config: Config = {
 		'./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}',
 	],
 	theme: {
-		extend: {},
+		extend: {
+      minHeight: {
+        'screen-minus-navbar': 'calc(100vh - 4rem)',
+      },
+      maxHeight: {
+        'screen-minus-navbar': 'calc(100vh - 4rem)',
+      },
+    },
 	},
 	darkMode: 'class',
 	plugins: [
