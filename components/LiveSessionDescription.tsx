@@ -16,9 +16,9 @@ export default function LiveSessionDescription({ description, session }: Props) 
   const lines = description.split('\n')
 
   return (
-    <div className="mt-4 text-lg text-zinc-200 space-y-2">
+    <div className="mt-4 text-md text-zinc-200 space-y-5">
       {lines.map((line, index) => (
-        <p key={index} className="whitespace-pre-wrap leading-relaxed">
+        <p key={index} className="whitespace-pre-wrap break-keep leading-relaxed">
           <Linkify
             componentDecorator={(href, text, key) => (
               <Link
@@ -26,13 +26,13 @@ export default function LiveSessionDescription({ description, session }: Props) 
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-100 hover:text-zinc-300 transition-all underline hover:opacity-80"
+                className="text-zinc-100 hover:text-zinc-300 transition-all underline"
               >
                 {text}
               </Link>
             )}
           >
-            {line.split(' ').map((word, i) => {
+            {line.split(/(\s+)/).map((word, i) => {
               if (word.startsWith('@')) {
                 const username = word.slice(1).toLowerCase()
                 const social = mentionMap[username]
@@ -44,7 +44,7 @@ export default function LiveSessionDescription({ description, session }: Props) 
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex text-zinc-100 hover:text-zinc-300 transition-all items-center gap-1 font-semibold mr-1"
+                    className="inline-flex text-zinc-100 hover:text-zinc-300 transition-all items-center gap-1 font-semibold"
                   >
                     <Image
                       src="/icons/instagram.svg"
@@ -58,7 +58,7 @@ export default function LiveSessionDescription({ description, session }: Props) 
                 )
               }
 
-              return <span key={`${index}-${i}`} className="mr-1">{word}</span>
+              return <span key={`${index}-${i}`}>{word}</span>
             })}
           </Linkify>
         </p>

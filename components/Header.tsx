@@ -28,11 +28,11 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <Navbar shouldHideOnScroll maxWidth="full" isBlurred isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar shouldHideOnScroll  maxWidth="full" height={"5rem"} className='px-2' isBlurred isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       <NavbarBrand className="flex items-center gap-2">
         <Link href="/" className="flex items-center gap-2">
           <Logo className="w-8 h-8" />
-          <h1 className="hidden lg:block font-bold">Under The Flow</h1>
+          <h1 className="block md:hidden lg:block font-bold">Under The Flow</h1>
         </Link>
       </NavbarBrand>
 

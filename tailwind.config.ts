@@ -10,10 +10,10 @@ const config: Config = {
 	theme: {
 		extend: {
       minHeight: {
-        'screen-minus-navbar': 'calc(100vh - 4rem)',
+        'screen-minus-navbar': 'calc(100vh - 5rem)',
       },
       maxHeight: {
-        'screen-minus-navbar': 'calc(100vh - 4rem)',
+        'screen-minus-navbar': 'calc(100vh - 5rem)',
       },
     },
 	},

@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-// import Autoscroll from 'embla-carousel-auto-scroll';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 import ArtistCard from './ArtistCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -22,11 +21,6 @@ export default function ArtistGrid({ artists }: ArtistGridProps) {
       dragThreshold: 5,
     },
     [
-      // Autoscroll({
-      //   speed: 0.4,
-      //   startDelay: 4000,
-      //   stopOnInteraction: true,
-      // }),
       WheelGesturesPlugin(),
     ]
   );
@@ -57,7 +51,7 @@ export default function ArtistGrid({ artists }: ArtistGridProps) {
   if (!artists) return null;
 
   return (
-    <div className="relative overflow-hidden flex flex-col min-h-screen-minus-navbar h-screen items-center xl:pt-4">
+    <div className="relative overflow-hidden flex flex-col min-h-screen-minus-navbar h-screen items-center ">
       {/* === Slider === */}
       <div ref={emblaRef} className="overflow-hidden rounded-lg w-full h-full flex-1">
         <div className="flex h-full">
