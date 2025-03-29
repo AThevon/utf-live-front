@@ -11,8 +11,9 @@ export type Artist = {
   name: string
   slug: string
   bio: string
-  images: Image[]
-  socials: Socials[]
+  profile_image: string
+  images: ImageType[]
+  socials: Social[]
   created_at: string
   updated_at: string
 }
@@ -21,6 +22,7 @@ export type LiveSessionList = {
   id: number
   title: string
   slug: string
+  genre: string
   video_url: string
   published_at: string | null
   thumbnail_url: string
@@ -34,17 +36,18 @@ export type LiveSession = {
   id: number
   title: string
   slug: string
+  genre: string
   video_url: string
   description: string
   published_at: string
   artist: Artist
-  participants: Artist[]
+  participants: Participant[]
   created_at: string
   updated_at: string
 }
 
 
-export type Image = {
+export type ImageType = {
   id: number
   url: string
   alt: string
@@ -52,9 +55,16 @@ export type Image = {
   is_thumbnail?: boolean
 }
 
-export type Socials = {
+export type Social = {
   name: string
   slug: string
   icon_url: string
   url: string
+}
+
+export type Participant = {
+  id: number
+  name: string
+  slug: string
+  socials: Social[]
 }

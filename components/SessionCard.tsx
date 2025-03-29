@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { LiveSessionList } from "@/types";
-import { Button, Card, Image, Skeleton } from "@heroui/react";
+import { Button, Card, Divider, Image, Skeleton } from "@heroui/react";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import MiniAudioPlayer from "@/components/MiniAudioPlayer";
@@ -37,16 +37,18 @@ export default function SessionCard({ session }: SessionCardProps) {
           src={session.thumbnail_url}
           alt=""
           isBlurred
-          className={`object-cover md:-translate-x-3 xl:group-hover/card:translate-x-0 h-full w-full max-h-[350px] md:max-h-full p-5 md:p-0 rounded-lg overflow-hidden md:rounded-none md:clipped-image  ${isImageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+          className={`object-cover md:-translate-x-3 xl:group-hover/card:translate-x-0 h-full w-full md:min-h-[550px] lg:min-h-[430px] max-h-[350px] md:max-h-full lg:max-h-[430px] p-5 md:p-0 rounded-lg overflow-hidden md:rounded-none md:clipped-image  ${isImageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
           onLoad={() => setIsImageLoaded(true)}
         />
 
 
         <div className="flex flex-col text-start w-full gap-2 p-4">
-          <div className="p-2 text-center md:text-end">
+          <div className="p-2 flex flex-col items-center md:items-end gap-1 text-center md:text-end">
             <h3 className="text-2xl font-semibold">{session.title}</h3>
             <p className="text-md text-zinc-400">{session.artist.name}</p>
-            {session.published_at && <p className="text-sm text-zinc-500">{formatDateFR(session.published_at)}</p>}
+            <Divider className="mt-3 mb-1 w-1/3" />
+            {session.published_at && <p className="font-semibold text-sm text-zinc-500">{formatDateFR(session.published_at)}</p>}
+            <p className="text-sm mt-3 px-4 py-1 rounded-xl bg-zinc-500 text-white">{session.genre}</p>
           </div>
 
           <div className="mt-auto">

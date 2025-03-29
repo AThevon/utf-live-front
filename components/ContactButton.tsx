@@ -33,8 +33,8 @@ export default function ContactButton({
       className={twMerge(
         'group/btn px-4 py-2 rounded-md transition-all duration-300',
         isActive
-          ? 'bg-white text-black'
-          : 'bg-white/10 text-white hover:bg-white hover:text-black',
+          ? 'bg-zinc-50 text-black'
+          : 'bg-white/10 text-white hover:bg-zinc-50 hover:text-black',
         className
       )}
       variant="flat"

@@ -32,17 +32,17 @@ export default function Header() {
       <NavbarBrand className="flex items-center gap-2">
         <Link href="/" className="flex items-center gap-2">
           <Logo className="w-8 h-8" />
-          <h1 className="font-bold">Under The Flow</h1>
+          <h1 className="hidden lg:block font-bold">Under The Flow</h1>
         </Link>
       </NavbarBrand>
 
       {/* Menu Toggle Button for Mobile */}
-      <NavbarContent className="sm:hidden" justify="end">
+      <NavbarContent className="md:hidden" justify="end">
         <NavbarMenuToggle aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'} />
       </NavbarContent>
 
       {/* Desktop Navigation Links */}
-      <NavbarContent className="hidden sm:flex gap-4 relative" justify="center">
+      <NavbarContent className="hidden md:flex gap-4 relative" justify="center">
         {navlinks.map(({ href, text }) => {
           const isActive = pathname === href;
           return (
@@ -50,7 +50,7 @@ export default function Header() {
               {isActive && (
                 <motion.div
                   layoutId="active-link-bg"
-                  className="absolute inset-0 h-8 bg-white rounded-md z-0"
+                  className="absolute inset-0 h-8 bg-zinc-50 rounded-md z-0"
                   transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                 />
               )}
@@ -68,7 +68,7 @@ export default function Header() {
       </NavbarContent>
 
       {/* Contact Button */}
-      <NavbarContent justify="end" className="hidden sm:flex">
+      <NavbarContent justify="end" className="hidden md:flex">
         <NavbarItem>
           <ContactButton />
         </NavbarItem>
@@ -81,7 +81,7 @@ export default function Header() {
             <Link
               href={href}
               onClick={() => setIsMenuOpen(false)}
-              className={`w-full block px-4 py-2 rounded-md ${
+              className={`block md:hidden w-full px-4 py-2 rounded-md ${
                 pathname === href ? 'bg-white text-black' : 'text-white'
               }`}
             >
@@ -90,7 +90,7 @@ export default function Header() {
           </NavbarMenuItem>
         ))}
         <NavbarMenuItem>
-          <ContactButton className="w-full" onPress={() => setIsMenuOpen(false)}/>
+          <ContactButton className="md:hidden w-full" onPress={() => setIsMenuOpen(false)}/>
         </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
