@@ -21,6 +21,7 @@ export type LiveSessionList = {
   id: number
   title: string
   slug: string
+  video_url: string
   published_at: string | null
   thumbnail_url: string
   artist: {

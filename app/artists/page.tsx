@@ -7,7 +7,7 @@ export default async function ArtistsPage() {
   const artists = await getAllArtists()
 
   return (
-    <div className="px-8 py-4 max-h-screen-minus-navbar">
+    <div className="px-2 md:px-8 flex flex-col min-h-screen-minus-navbar max-h-screen-minus-navbar">
       <ArtistGrid artists={artists} />
     </div>
   );

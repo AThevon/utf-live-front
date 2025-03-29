@@ -5,6 +5,7 @@ import { Providers } from "./providers";
 import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
 import Footer from "@/components/Footer";
+import { LayoutGroup } from "framer-motion";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,11 +31,13 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`${geistSans.variable} ${geistMono.variable} text-foreground bg-background min-h-screen`}>
         <Providers>
+        <LayoutGroup>
           <Header />
           <PageTransition>
             {children}
           </PageTransition>
           <Footer />
+        </LayoutGroup>
         </Providers>
       </body>
     </html>

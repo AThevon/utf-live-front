@@ -44,7 +44,7 @@ export default function ArtistCard({ artist }: ArtistCardProps) {
           onLoad={() => setIsImageLoaded(true)}
         />
       </CardBody>
-      <CardFooter className="absolute z-10 bottom-0 bg-transparent flex justify-center items-center w-full p-4">
+      <CardFooter className="absolute z-10 bottom-0 flex justify-center items-center w-full p-4">
         <h2 className="text-xl font-semibold">{artist.name}</h2>
         <ArrowRight
           className="w-5 h-5 text-white absolute right-4 opacity-0 translate-x-2 transition-all duration-300 group-hover/card:opacity-100 group-hover/card:translate-x-0"

@@ -13,10 +13,10 @@ export default function Footer() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="bg-black px-6 pt-8 pb-5"
     >
-      <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-20 items-start">
+      <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-20 text-center items-start">
 
         {/* Liens */}
-        <div className="space-y-3 text-end">
+        <div className="space-y-3 md:text-end">
           <h3 className="text-sm font-semibold uppercase tracking-wider">
             À propos
           </h3>
@@ -50,11 +50,11 @@ export default function Footer() {
         </Link>
 
         {/* Réseaux sociaux */}
-        <div className="space-y-3">
+        <div className="space-y-3 md:text-start">
           <h3 className="text-sm font-semibold uppercase tracking-wider">
             Restez connectés
           </h3>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col items-center md:items-start gap-2">
             <Link
               href="https://instagram.com/utflive"
               target="_blank"

@@ -6,67 +6,93 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
-  Button,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
 } from '@heroui/react';
 import { motion } from 'framer-motion';
 import Logo from './Logo';
-import { Send } from 'lucide-react';
+import Link from 'next/link';
+import ContactButton from '@/components/ContactButton';
+import { useState } from 'react';
 
 const navlinks = [
   { href: '/', text: 'Accueil' },
   { href: '/live-sessions', text: 'Live Sessions' },
   { href: '/artists', text: 'Artistes' },
-  { href: '/about', text: 'à propos' },
+  { href: '/about', text: 'À propos' },
 ];
 
 export default function Header() {
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <Navbar shouldHideOnScroll maxWidth="full" isBlurred>
-      <NavbarBrand>
-        <Logo className="w-8 h-8" />
+    <Navbar shouldHideOnScroll maxWidth="full" isBlurred isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+      <NavbarBrand className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
+          <Logo className="w-8 h-8" />
+          <h1 className="font-bold">Under The Flow</h1>
+        </Link>
       </NavbarBrand>
 
+      {/* Menu Toggle Button for Mobile */}
+      <NavbarContent className="sm:hidden" justify="end">
+        <NavbarMenuToggle aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'} />
+      </NavbarContent>
+
+      {/* Desktop Navigation Links */}
       <NavbarContent className="hidden sm:flex gap-4 relative" justify="center">
         {navlinks.map(({ href, text }) => {
           const isActive = pathname === href;
           return (
-            <NavbarItem key={href} className="relative">
-              <Link
-                href={href}
-                color={isActive ? 'primary' : 'foreground'}
-                className="relative z-10 capitalize"
-              >
-                {text}
-              </Link>
+            <NavbarItem key={href} className="relative h-8 flex items-center">
               {isActive && (
                 <motion.div
-                  layoutId="underline"
-                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary rounded"
+                  layoutId="active-link-bg"
+                  className="absolute inset-0 h-8 bg-white rounded-md z-0"
                   transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                 />
               )}
+              <Link
+                href={href}
+                className={`relative z-10 px-3 py-1 rounded-md transition-colors capitalize ${
+                  isActive ? 'text-black' : 'text-white/80 hover:text-white'
+                }`}
+              >
+                {text}
+              </Link>
             </NavbarItem>
           );
         })}
       </NavbarContent>
 
-      <NavbarContent justify="end">
+      {/* Contact Button */}
+      <NavbarContent justify="end" className="hidden sm:flex">
         <NavbarItem>
-          <Button
-            as={Link}
-            startContent={<Send className={`w-5 h-5 group-hover/btn:rotate-45 transition-all ${pathname === "/contact" && 'rotate-45'}`} />}
-            color="primary"
-            href="/contact"
-            variant="solid"
-            className="group/btn text-black"
-          >
-            Nous contacter
-          </Button>
+          <ContactButton />
         </NavbarItem>
       </NavbarContent>
+
+      {/* Mobile Navigation Menu */}
+      <NavbarMenu>
+        {navlinks.map(({ href, text }) => (
+          <NavbarMenuItem key={href}>
+            <Link
+              href={href}
+              onClick={() => setIsMenuOpen(false)}
+              className={`w-full block px-4 py-2 rounded-md ${
+                pathname === href ? 'bg-white text-black' : 'text-white'
+              }`}
+            >
+              {text}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+        <NavbarMenuItem>
+          <ContactButton className="w-full" onPress={() => setIsMenuOpen(false)}/>
+        </NavbarMenuItem>
+      </NavbarMenu>
     </Navbar>
   );
 }

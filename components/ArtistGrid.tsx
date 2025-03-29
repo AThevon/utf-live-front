@@ -57,14 +57,14 @@ export default function ArtistGrid({ artists }: ArtistGridProps) {
   if (!artists) return null;
 
   return (
-    <div className="relative overflow-hidden h-full flex flex-col items-center">
+    <div className="relative overflow-hidden flex flex-col min-h-screen-minus-navbar h-screen items-center xl:pt-4">
       {/* === Slider === */}
-      <div ref={emblaRef} className="overflow-hidden rounded-lg w-full h-full">
-        <div className="flex">
+      <div ref={emblaRef} className="overflow-hidden rounded-lg w-full h-full flex-1">
+        <div className="flex h-full">
           {artists.map((artist) => (
             <div
               key={artist.id}
-              className="flex-shrink-0 px-2 w-full hidden md:block md:w-1/2 xl:w-1/3 2xl:w-1/4"
+              className="flex-shrink-0 md:px-2 w-full  md:w-1/2 xl:w-1/3 2xl:w-1/4"
             >
               <ArtistCard artist={artist} />
             </div>
@@ -75,22 +75,22 @@ export default function ArtistGrid({ artists }: ArtistGridProps) {
       {/* === Controls (flèches + dots) === */}
       <div className="w-full relative my-6">
         {/* Dots centrés */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-3">
+        <div className="md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 flex justify-center gap-3">
           {scrollSnaps.map((_, index) => (
             <button
               key={index}
               onClick={() => scrollTo(index)}
               aria-label={`Aller à ${artists[index]?.name}`}
               className={`w-6 h-6 rounded-full border hover:border-medium hover:scale-105 active:scale-100 bg-transparent border-white/25 transition-all duration-150 ${selectedIndex === index
-                ? 'border-white/100 border-medium'
+                ? '!border-white border-medium'
                 : 'opacity-50 hover:opacity-100'
                 }`}
             />
           ))}
         </div>
 
-        {/* Flèches à droite */}
-        <div className="flex justify-end gap-3 pr-2">
+        {/* Flèches */}
+        <div className="hidden md:flex justify-end gap-3 pr-2">
           <ButtonGroup
             variant="bordered"
           >
