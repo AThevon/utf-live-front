@@ -1,9 +1,9 @@
 'use client'
 
 import { Form, Input, Textarea, Button, Card, addToast } from '@heroui/react'
-import { Mail } from 'lucide-react'
 import { useState } from 'react'
 import { sendContactMessage } from '@/lib/api/contact'
+import { Mail } from 'lucide-react'
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false)
@@ -56,13 +56,15 @@ export default function ContactForm() {
   }
 
   return (
-    <Card className="bg-zinc-900/80 border border-zinc-700/40 p-6">
+    <Card className="bg-zinc-900/80 border border-zinc-700/40 p-6 self-center">
+      <p className='text-lg'>Une question ?</p>
+       <p className="text-zinc-400 mb-6 ml-2">Écris-nous juste ici</p>
       <Form onSubmit={handleSubmit} className="space-y-2">
         <Input id="name" name="name" label="Nom" isRequired />
         <Input id="email" name="email" label="Email" type="email" isRequired />
         <Input id="subject" name="subject" label="Sujet" isRequired />
         <Textarea id="message" name="message" label="Message" isRequired minRows={6} />
-        <Button type="submit" className="w-full" isLoading={loading}>
+        <Button type="submit" className="w-full" isLoading={loading} startContent={loading ? "" : <Mail className="h-5 mt-1" />}>
           Envoyer le message
         </Button>
       </Form>

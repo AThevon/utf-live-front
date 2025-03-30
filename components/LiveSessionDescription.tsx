@@ -16,7 +16,7 @@ export default function LiveSessionDescription({ description, session }: Props) 
   const lines = description.split('\n')
 
   return (
-    <div className="mt-4 text-md text-zinc-200 space-y-5">
+    <div className="flex-1 mt-4 text-md text-zinc-200 space-y-5">
       {lines.map((line, index) => (
         <p key={index} className="whitespace-pre-wrap break-keep leading-relaxed">
           <Linkify
