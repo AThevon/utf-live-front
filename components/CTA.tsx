@@ -9,7 +9,7 @@ export default function CTA() {
       <p className="text-zinc-400">
         Nous sommes toujours à la recherche de talents à mettre en lumière.
       </p>
-      <ContactButton size="lg" activeMatch={false} className="mt-8 w-[20rem]" />
+      <ContactButton size="lg" activeMatch={false} className="mt-8 w-fit px-20 mx-auto" />
     </section>
   );
 }

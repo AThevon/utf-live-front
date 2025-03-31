@@ -57,8 +57,8 @@ export default function ContactForm() {
 
   return (
     <Card className="bg-zinc-900/80 border border-zinc-700/40 p-6 self-center">
-      <p className='text-lg'>Une question ?</p>
-       <p className="text-zinc-400 mb-6 ml-2">Écris-nous juste ici</p>
+      <h4 className='text-center text-lg'>Une question ?</h4>
+       <p className="text-center text-zinc-400 mb-6">Écris-nous juste ici</p>
       <Form onSubmit={handleSubmit} className="space-y-2">
         <Input id="name" name="name" label="Nom" isRequired />
         <Input id="email" name="email" label="Email" type="email" isRequired />

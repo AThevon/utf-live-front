@@ -11,16 +11,14 @@ const socialLinks = [
     username: '@utf_live',
     href: 'https://instagram.com/utf_live',
     icon: "/icons/instagram.svg",
-    color: 'text-pink-400',
-    hover: 'hover:bg-pink-400/10',
+    color: 'hover:text-pink-400',
   },
   {
     name: 'YouTube',
     username: 'Under The Flow',
     href: 'https://youtube.com/@UnderTheFlow_live',
     icon: "/icons/youtube.svg",
-    color: 'text-red-500',
-    hover: 'hover:bg-red-500/10',
+    color: 'hover:text-red-500',
   },
 ]
 
@@ -54,6 +52,7 @@ export default function ContactSocials() {
           className="rounded-full overflow-hidden shadow-2xl"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
+          tabIndex={-1}
         >
           <Image
             isBlurred
@@ -92,17 +91,18 @@ export default function ContactSocials() {
               />
               <div>
                 <p className="font-semibold text-white">{social.name}</p>
-                <p className="text-sm text-zinc-400">{social.username}</p>
+                <h5 className="text-zinc-400">{social.username}</h5>
               </div>
             </div>
-            <Link href={social.href} target="_blank">
-              <Button
-                variant="ghost"
-                className={`mt-4 w-full ${social.color} ${social.hover} transition`}
-              >
-                {social.name === 'YouTube' ? 'Voir la chaîne' : 'Voir le profil'}
-              </Button>
-            </Link>
+            <Button
+              as={Link}
+              href={social.href}
+              target="_blank"
+              variant="bordered"
+              className={`btn mt-4 w-full ${social.color} transition`}
+            >
+              {social.name === 'YouTube' ? 'Voir la chaîne' : 'Voir le profil'}
+            </Button>
           </Card>
         ))}
       </div>

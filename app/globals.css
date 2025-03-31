@@ -2,8 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* LIVE SESSION CARD */
 .clipped-image {
   @media screen and (max-width: 640px) {
     clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
   }
 }
+
+h1, h2, h3, h4, h5, h6, button, a.btn {
+  @apply !font-secondary !font-normal !tracking-widest;
+}
+h1 {
+  @apply !font-bold !tracking-wider;
+}
+
+button, a.btn, label, select {
+  @apply focus-visible:!outline-zinc-100;
+}
+

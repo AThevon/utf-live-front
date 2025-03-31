@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss';
 import { heroui } from '@heroui/react';
+import { fontFamily } from 'tailwindcss/defaultTheme';
 
 const config: Config = {
 	content: [
@@ -9,6 +10,14 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+      fontFamily: {
+        sans: ['var(--font-custom-sans)', ...fontFamily.sans],
+        secondary: ['var(--font-custom-secondary)', ...fontFamily.sans],
+        mono: ['var(--font-custom-mono)', ...fontFamily.mono],
+      },
+      letterSpacing: {
+        xxl: '.15rem',
+      },
       minHeight: {
         'screen-minus-navbar': 'calc(100vh - 5rem)',
       },

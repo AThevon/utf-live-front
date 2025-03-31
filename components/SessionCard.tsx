@@ -44,11 +44,11 @@ export default function SessionCard({ session }: SessionCardProps) {
 
         <div className="flex flex-col text-start w-full gap-2 p-4">
           <div className="p-2 flex flex-col items-center md:items-end gap-1 text-center md:text-end">
-            <h3 className="text-2xl font-semibold">{session.title}</h3>
+            <h3 className="text-2xl font-semibold !tracking-wide">{session.title}</h3>
             <p className="text-md text-zinc-400">{session.artist.name}</p>
             <Divider className="mt-3 mb-1 w-1/3" />
             {session.published_at && <p className="font-semibold text-sm text-zinc-500">{formatDateFR(session.published_at)}</p>}
-            <p className="text-sm mt-3 px-4 py-1 rounded-xl bg-zinc-500 text-white">{session.genre}</p>
+            <p className="font-secondary tracking-xxl text-sm mt-3 px-4 py-1 rounded-xl bg-zinc-500 text-white">{session.genre}</p>
           </div>
 
           <div className="mt-auto">

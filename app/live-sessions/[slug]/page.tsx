@@ -21,7 +21,7 @@ export default async function LiveSession({ params }: LiveSessionProps) {
   return (
     <div className="px-6 w-full py-10 max-w-7xl mx-auto text-white">
       {/* Video */}
-      <h1 className="text-2xl lg:text-4xl text-center md:text-start font-bold mb-5 ml-4">{session.title}</h1>
+      <h1 className="text-2xl lg:text-4xl text-center md:text-start font-bold !tracking-widest mb-5 ml-4">{session.title}</h1>
       <div className="rounded-xl overflow-hidden shadow-xl bg-zinc-900">
         <iframe
           src={session.video_url}

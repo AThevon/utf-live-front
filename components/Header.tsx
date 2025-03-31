@@ -28,12 +28,15 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <Navbar shouldHideOnScroll  maxWidth="full" height={"5rem"} className='px-2' isBlurred isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar shouldHideOnScroll maxWidth="full" height={"5rem"} className='px-2' isBlurred isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       <NavbarBrand className="flex items-center gap-2">
-        <Link href="/" className="flex items-center gap-2">
-          <Logo className="w-8 h-8" />
-          <h1 className="block md:hidden lg:block font-bold">Under The Flow</h1>
+        <Link href="/" className="hidden md:flex items-center gap-2">
+          <motion.div whileTap={{ scale: 0.95 }} tabIndex={-1}>
+            <Logo className="w-14 h-14" />
+          </motion.div>
         </Link>
+        <Logo className="block md:hidden w-10 h-10" />
+        <h1 className="block md:hidden">Under The Flow</h1>
       </NavbarBrand>
 
       {/* Menu Toggle Button for Mobile */}
@@ -56,9 +59,8 @@ export default function Header() {
               )}
               <Link
                 href={href}
-                className={`relative z-10 px-3 py-1 rounded-md transition-colors capitalize ${
-                  isActive ? 'text-black' : 'text-white/80 hover:text-white'
-                }`}
+                className={`btn relative z-10 px-3 py-1 rounded-md capitalize ${isActive ? 'text-black' : 'text-white/80 hover:text-white'
+                  }`}
               >
                 {text}
               </Link>
@@ -81,16 +83,15 @@ export default function Header() {
             <Link
               href={href}
               onClick={() => setIsMenuOpen(false)}
-              className={`block md:hidden w-full px-4 py-2 rounded-md ${
-                pathname === href ? 'bg-white text-black' : 'text-white'
-              }`}
+              className={`block md:hidden btn w-full px-4 py-2 rounded-md ${pathname === href ? 'bg-white text-black' : 'text-white'
+                }`}
             >
               {text}
             </Link>
           </NavbarMenuItem>
         ))}
         <NavbarMenuItem>
-          <ContactButton className="md:hidden w-full" onPress={() => setIsMenuOpen(false)}/>
+          <ContactButton className="md:hidden w-full" onPress={() => setIsMenuOpen(false)} />
         </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
