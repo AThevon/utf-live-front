@@ -67,7 +67,7 @@ export default function ContactForm() {
         <Checkbox id="newsletter" name="newsletter" color='default' className="">
           Je veux être informé quand un nouveau live sort
         </Checkbox>
-        <Button type="submit" className="w-full bg-white text-black" radius='sm' size='lg' isLoading={loading} startContent={loading ? "" : <Mail className="h-5 mt-1" />}>
+        <Button type="submit" className="w-full bg-white text-black" radius='sm' size='lg' isLoading={loading} startContent={loading ? "" : <Mail className="h-6" />}>
           Envoyer le message
         </Button>
       </Form>
