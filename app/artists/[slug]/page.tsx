@@ -1,25 +1,54 @@
-import { getArtist } from "@/lib/api/artists";
-import Image from "next/image";
+import BackButton from "@/components/BackButton"
+import ImageSwiper from "@/components/ImageSwiper"
+import LatestArtistSessionButton from "@/components/LatestArtistSessionButton"
+import MusicContainer from "@/components/MusicContainer"
+import SocialCard from "@/components/SocialCard"
+import { getArtist } from "@/lib/api/artists"
+import { Divider } from "@heroui/react"
 
 type ArtistProps = {
-  params: Promise<{ slug: string }>;
-};
+  params: Promise<{ slug: string }>
+}
 
 export default async function Artist({ params }: ArtistProps) {
-  const { slug } = await params;
-  const artist = await getArtist(slug);
+  const { slug } = await params
+  const artist = await getArtist(slug)
+
   return (
-    <div>
-      <h1 className="text-2xl font-bold">Artist</h1>
-      <p>{artist.name}</p>
-      <p>{artist.bio}</p>
-        <Image
-          src={artist.images[0].url}
-          alt={artist.name}
-          width={1000}
-          height={1000}
-          className="relative inset-0 w-1/2 h-screen object-cover"
-        />
+    <div className="grid grid-cols-1 xl:grid-cols-[60%_40%] min-h-screen-minus-navbar max-w-[2000px] mx-auto w-full px-2 sm:px-8 md:px-12 xl:px-32">
+      <BackButton className="hidden xl:block" />
+      {/* Texte à gauche */}
+      <div className="text-center sm:text-start flex flex-col justify-center pt-4 pb-10 xl:pr-20">
+        <h1 className="text-4xl md:text-6xl xl:text-8xl text-center sm:text-start max-w-2xl -ml-3 font-bold tracking-widest">{artist.name}</h1>
+        <Divider className="my-2 w-[75%] mx-auto sm:mx-0" />
+        <p className="text-zinc-400 whitespace-pre-line my-auto">{artist.bio}</p>
+
+        <div className="flex flex-col gap-2 mt-auto">
+          <h3 className="text-lg font-semibold">
+            Dernière session live
+          </h3>
+          <LatestArtistSessionButton artist={artist} className="mx-auto sm:mx-0" />
+        <Divider className="w-[40%] my-4 mx-auto sm:mx-0" />
+          <h3 className="text-lg font-semibold">
+            Son dernier projet
+          </h3>
+        <div className="">
+          <MusicContainer />
+        </div>
+          <Divider className="w-[40%] my-4 mx-auto sm:mx-0" />
+          <h3 className="text-lg font-semibold">
+            Retrouve {artist.name} ici
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 text-start">
+            {artist.socials.map((social) => (
+              <SocialCard key={social.slug} social={social} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Image swiper vertical avec thumbs */}
+      <ImageSwiper images={artist.images} />
     </div>
-  );
+  )
 }

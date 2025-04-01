@@ -1,26 +1,29 @@
 "use client";
 
-import { Artist } from "@/types";
+import { ArtistList } from "@/types";
 import { Avatar } from "@heroui/react";
 import Link from "next/link";
 
 type ArtistAvatarProps = {
-  artist: Artist;
+  artist: ArtistList;
+  size?: "sm" | "lg";
   className?: string;
+  isBordered?: boolean;
+  isRounded?: boolean;
 };
 
-export default function ArtistAvatar({ artist, className }: ArtistAvatarProps) {
+export default function ArtistAvatar({ artist, size, isRounded = true, isBordered = true, className}: ArtistAvatarProps) {
   if (!artist) return;
   return (
-    <Link href={`/artists/${artist.slug}`} className={`${className} flex items-center gap-4 w-fit transition-colors duration-300 hover:text-zinc-300`}>
+    <Link href={`/artists/${artist.slug}`} className={`${className} group !flex items-center gap-4 w-fit transition-colors duration-300 hover:text-zinc-300`}>
       <Avatar
-        isBordered
-        radius="lg"
+        isBordered={isBordered}
+        radius={isRounded ? "lg" : "none"}
         src={artist.profile_image}
         alt={artist.name}
-        className="transition-transform duration-300 hover:scale-105"
+        className={`transition-transform duration-300  object-contain ${size === "sm" ? "w-6 h-6" : size === "lg" ? "w-16 h-16 group-hover:scale-105" : "w-10 h-10 group-hover:scale-105"}`}
       />
-      <h3 className="text-lg font-semibold">{artist.name}</h3>
+      <h3 className={`${size === "sm" ? "text-md max-w-[130px]" : "text-lg"} font-semibold`}>{artist.name}</h3>
     </Link>
   );
 }

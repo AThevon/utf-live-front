@@ -29,7 +29,7 @@ export default function Header() {
 
   return (
     <Navbar shouldHideOnScroll maxWidth="full" height={"5rem"} className='px-2' isBlurred isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
-      <NavbarBrand className="flex items-center gap-2">
+      <NavbarBrand className="flex items-center gap-2 min-w-[100px] lg:min-w-[250px] flex-grow-0">
         <Link href="/" className="hidden md:flex items-center gap-2">
           <motion.div whileTap={{ scale: 0.95 }} tabIndex={-1}>
             <Logo className="w-14 h-14" />
@@ -45,7 +45,7 @@ export default function Header() {
       </NavbarContent>
 
       {/* Desktop Navigation Links */}
-      <NavbarContent className="hidden md:flex gap-4 relative" justify="center">
+      <NavbarContent className="hidden md:flex gap-4 relative mx-auto flex-1 !justify-start md:!justify-center" justify='center'>
         {navlinks.map(({ href, text }) => {
           const isActive = pathname === href;
           return (
@@ -68,13 +68,13 @@ export default function Header() {
           );
         })}
       </NavbarContent>
+      <div className="lg:w-[250px] hidden md:flex">
+          <ContactButton className='w-fit ml-auto' />
+      </div>
 
       {/* Contact Button */}
-      <NavbarContent justify="end" className="hidden md:flex">
-        <NavbarItem>
-          <ContactButton />
-        </NavbarItem>
-      </NavbarContent>
+      {/* <NavbarContent justify="end" className=" w-[140px]">
+      </NavbarContent> */}
 
       {/* Mobile Navigation Menu */}
       <NavbarMenu>

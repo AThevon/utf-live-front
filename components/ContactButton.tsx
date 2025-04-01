@@ -31,7 +31,7 @@ export default function ContactButton({
         />
       }
       className={twMerge(
-        'group/btn btn px-10 py-2 rounded-md transition-all duration-300 flex items-center',
+        'group/btn btn px-10 py-2 bg-zinc-800/50 rounded-md transition-all duration-300 flex items-center',
         isActive
           ? 'bg-zinc-50 text-black'
           : 'bg-white/10 text-white hover:bg-zinc-50 hover:text-black',

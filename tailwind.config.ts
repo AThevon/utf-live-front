@@ -18,6 +18,9 @@ const config: Config = {
       letterSpacing: {
         xxl: '.15rem',
       },
+      height: {
+        'screen-minus-navbar': 'calc(100vh - 5rem)',
+      },
       minHeight: {
         'screen-minus-navbar': 'calc(100vh - 5rem)',
       },

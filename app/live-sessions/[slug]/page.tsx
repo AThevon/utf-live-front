@@ -34,7 +34,7 @@ export default async function LiveSession({ params }: LiveSessionProps) {
       <div className="mt-5 flex flex-col md:flex-row gap-8">
         {/* Text section */}
         <div className="flex-1 ">
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-0 justify-between items-center px-4">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-0 justify-between items-center sm:px-4">
             <ArtistAvatar artist={session.artist} className="" />
             <p className="text-sm text-zinc-500">
               Publiée le {formatDateFR(session.published_at)}

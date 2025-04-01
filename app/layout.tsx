@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Geist, Geist_Mono, Kanit, Montserrat, Oswald, Poppins, Raleway } from "next/font/google";
+import { Bebas_Neue, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import Header from "@/components/Header";
