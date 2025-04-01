@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react"
 import { motion } from "framer-motion"
 import { Button } from "@heroui/react"
 import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
 
 type Props = {
   className?: string
@@ -11,6 +12,25 @@ type Props = {
 
 export default function BackButton({ className }: Props) {
   const router = useRouter()
+  const [referrer, setReferrer] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const previous = sessionStorage.getItem("previous-path")
+      if (previous && previous !== window.location.pathname) {
+        setReferrer(previous)
+      }
+    }
+  }, [])
+
+  const handleBack = () => {
+    if (referrer) {
+      router.push(referrer)
+    } else {
+      router.push('/')
+    }
+  }
+
   return (
     <motion.div
       initial={{ x: -40, opacity: 0 }}
@@ -20,7 +40,7 @@ export default function BackButton({ className }: Props) {
     >
       <Button
         isIconOnly
-        onPress={() => router.back()}
+        onPress={handleBack}
         title="Retour"
         variant="ghost"
         className=""

@@ -1,6 +1,5 @@
 import BackButton from "@/components/BackButton"
 import ImageSwiper from "@/components/ImageSwiper"
-import LatestArtistSessionButton from "@/components/LatestArtistSessionButton"
 import MusicContainer from "@/components/MusicContainer"
 import SocialCard from "@/components/SocialCard"
 import { getArtist } from "@/lib/api/artists"
@@ -20,22 +19,17 @@ export default async function Artist({ params }: ArtistProps) {
       {/* Texte à gauche */}
       <div className="text-center sm:text-start flex flex-col justify-center pt-4 pb-10 xl:pr-20">
         <h1 className="text-4xl md:text-6xl xl:text-8xl text-center sm:text-start max-w-2xl -ml-3 font-bold tracking-widest">{artist.name}</h1>
-        <Divider className="my-2 w-[75%] mx-auto sm:mx-0" />
-        <p className="text-zinc-400 whitespace-pre-line my-auto">{artist.bio}</p>
+        <Divider className="my-2 w-[40%] mx-auto sm:mx-0" />
+        <p className="text-zinc-400 whitespace-pre-line mt-2">{artist.bio}</p>
 
         <div className="flex flex-col gap-2 mt-auto">
-          <h3 className="text-lg font-semibold">
-            Dernière session live
-          </h3>
-          <LatestArtistSessionButton artist={artist} className="mx-auto sm:mx-0" />
-        <Divider className="w-[40%] my-4 mx-auto sm:mx-0" />
-          <h3 className="text-lg font-semibold">
+          <h3 className="text-lg font-semibold mt-6">
             Son dernier projet
           </h3>
-        <div className="">
-          <MusicContainer />
-        </div>
-          <Divider className="w-[40%] my-4 mx-auto sm:mx-0" />
+          <div className="">
+            <MusicContainer />
+          </div>
+          <Divider className="w-[70%] my-4 mx-auto sm:mx-0" />
           <h3 className="text-lg font-semibold">
             Retrouve {artist.name} ici
           </h3>

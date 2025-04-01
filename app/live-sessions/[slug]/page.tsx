@@ -8,6 +8,7 @@ import LiveSessionDescription from "@/components/LiveSessionDescription";
 import { Divider } from "@heroui/react";
 import SocialCard from "@/components/SocialCard";
 import { CornerRightDown } from "lucide-react";
+import BackButton from "@/components/BackButton";
 
 type LiveSessionProps = {
   params: Promise<{ slug: string }>;
@@ -20,6 +21,7 @@ export default async function LiveSession({ params }: LiveSessionProps) {
 
   return (
     <div className="px-6 w-full py-10 max-w-7xl mx-auto text-white">
+      <BackButton />
       {/* Video */}
       <h1 className="text-2xl lg:text-4xl text-center md:text-start font-bold !tracking-widest mb-5 ml-4">{session.title}</h1>
       <div className="rounded-xl overflow-hidden shadow-xl bg-zinc-900">

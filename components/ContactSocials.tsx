@@ -45,7 +45,11 @@ export default function ContactSocials() {
   return (
     <div className="flex flex-col gap-4 lg:gap-10 h-full">
       {/* XL+ only interactive tilt image */}
-      <div className="hidden xl:block relative mx-auto w-full aspect-square [perspective:1000px]">
+      <motion.div
+        className="hidden xl:block relative mx-auto w-full aspect-square [perspective:1000px]"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1, transition: { duration: 1.2, delay: 0.3, type: 'spring', bounce: 0.3 } }}
+      >
         <motion.div
           style={{ rotateX, rotateY }}
           transition={{ type: 'spring', stiffness: 180, damping: 12 }}
@@ -62,7 +66,7 @@ export default function ContactSocials() {
           />
         </motion.div>
         <div className="absolute inset-0 rounded-full pointer-events-none blur-2xl bg-gradient-to-br from-cyan-700/20 via-zinc-500/20 to-cyan-500/20 animate-pulse [animation-duration:4s]" />
-      </div>
+      </motion.div>
 
       {/* Mobile fallback */}
       <div className="flex justify-center items-center xl:hidden">
@@ -78,7 +82,7 @@ export default function ContactSocials() {
         {socialLinks.map((social) => (
           <Card
             key={social.name}
-            className="bg-zinc-900/80 border border-zinc-700/40 p-5 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300"
+            className="bg-zinc-900/80 border border-zinc-700/40 p-4 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300"
           >
             <div className="flex items-center gap-4">
               <Image

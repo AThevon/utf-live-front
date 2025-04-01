@@ -28,7 +28,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <Navbar shouldHideOnScroll maxWidth="full" height={"5rem"} className='px-2' isBlurred isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar shouldHideOnScroll maxWidth="full" height={"5rem"} className='' isBlurred isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       <NavbarBrand className="flex items-center gap-2 min-w-[100px] lg:min-w-[250px] flex-grow-0">
         <Link href="/" className="hidden md:flex items-center gap-2">
           <motion.div whileTap={{ scale: 0.95 }} tabIndex={-1}>
@@ -49,17 +49,17 @@ export default function Header() {
         {navlinks.map(({ href, text }) => {
           const isActive = pathname === href;
           return (
-            <NavbarItem key={href} className="relative h-8 flex items-center">
+            <NavbarItem key={href} className="relative h-10 flex justify-center items-center">
               {isActive && (
                 <motion.div
                   layoutId="active-link-bg"
-                  className="absolute inset-0 h-8 bg-zinc-50 rounded-md z-0"
+                  className="absolute inset-0 h-9 bg-zinc-50 rounded-md z-0"
                   transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                 />
               )}
               <Link
                 href={href}
-                className={`btn relative z-10 px-3 py-1 rounded-md capitalize ${isActive ? 'text-black' : 'text-white/80 hover:text-white'
+                className={`btn relative z-10 px-3 py-1 rounded-md capitalize text-lg transition-all ${isActive ? 'text-black' : 'text-white/80 hover:text-white'
                   }`}
               >
                 {text}
@@ -68,13 +68,11 @@ export default function Header() {
           );
         })}
       </NavbarContent>
-      <div className="lg:w-[250px] hidden md:flex">
-          <ContactButton className='w-fit ml-auto' />
-      </div>
 
       {/* Contact Button */}
-      {/* <NavbarContent justify="end" className=" w-[140px]">
-      </NavbarContent> */}
+      <div className="lg:w-[250px] hidden md:flex">
+        <ContactButton className='w-fit ml-auto' />
+      </div>
 
       {/* Mobile Navigation Menu */}
       <NavbarMenu>

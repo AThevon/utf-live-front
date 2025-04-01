@@ -11,8 +11,8 @@ type SessionGridLatestProps = {
 export default function SessionGridLatest({ sessions }: SessionGridLatestProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      {sessions.map((session) => (
-        <SessionCard key={session.id} session={session} />
+      {sessions.map((session, index) => (
+        <SessionCard key={index} session={session} />
       ))}
     </div>
   );

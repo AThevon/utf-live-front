@@ -5,6 +5,27 @@ import Link from 'next/link'
 import { Button, Card, Divider, Image } from '@heroui/react'
 import { ArrowRight, BookOpenText, Hourglass, UsersRound } from 'lucide-react'
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: i * 0.15
+    }
+  })
+}
+
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+}
+
 const description = `Under The Flow, c’est une vision. Celle d’un son brut. D’un regard sincère. D’un moment qui compte.
 
 Pas juste une captation. Pas juste un live. Ici, chaque session est une expérience. Un shoot d’émotion, capté avec exigence.
@@ -58,24 +79,22 @@ export default function About() {
     <div className="max-w-[2000px] w-full mx-auto flex-1 px-6 py-10 space-y-10">
       {/* LOGO + HEADER */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        variants={container}
+        initial="hidden"
+        animate="visible"
         className="flex flex-col md:flex-row text-center md:text-start justify-center md:justify-start gap-6 items-center max-w-7xl mx-auto"
       >
-        <Image
-          src="/utf-logo.png"
-          alt="Logo UTF"
-          width={160}
-          height={160}
-          className="rounded-full object-contain"
-        />
+        <motion.div variants={fadeUp} custom={0}>
+          <Image
+            src="/utf-logo.png"
+            alt="Logo UTF"
+            width={160}
+            height={160}
+            className="rounded-full object-contain"
+          />
+        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
+        <motion.div variants={fadeUp} custom={1}>
           <h1 className="text-4xl md:text-5xl font-bold">Under The Flow</h1>
           <p className="text-zinc-400 max-w-2xl mx-auto text-lg mt-1">
             Sessions live. Authentiques. Ancrées dans l’instant.
@@ -89,26 +108,39 @@ export default function About() {
       <div className="w-full max-w-6xl mx-auto space-y-10 flex flex-col">
         {/* MANIFESTE */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
+          variants={container}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="mx-auto w-full"
         >
-          <h3 className="text-2xl font-bold mb-3">
+          <motion.h3 variants={fadeUp} className="text-2xl font-bold mb-3">
             <BookOpenText className="inline mr-3" size={24} />
             Manifeste
-          </h3>
-          <p className="text-zinc-400 leading-relaxed whitespace-pre-wrap break-keep">
+          </motion.h3>
+          <motion.p
+            variants={fadeUp}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="text-zinc-400 leading-relaxed whitespace-pre-wrap break-keep"
+          >
             {description}
-          </p>
-          <p className="text-zinc-500 italic mt-6">
+          </motion.p>
+          <motion.p
+            variants={fadeUp}
+            className="text-zinc-500 italic mt-6"
+          >
             {`“La musique est un instant. Une vibration. Un souffle.”`}
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* FONDATEURS */}
-        <div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={container}
+          viewport={{ once: true }}
+        >
           <Divider className='mb-10'/>
           <h3 className="text-2xl mb-4">
             <UsersRound className="inline mr-3" size={24} />
@@ -116,13 +148,7 @@ export default function About() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {founders.map((founder, i) => (
-              <motion.div
-                key={founder.name}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
+              <motion.div key={founder.name} variants={fadeUp} custom={i}>
                 <Card className="flex bg-zinc-900/70 border border-zinc-800/40 p-4 gap-4">
                   <div className="flex gap-3 items-end">
                     <Image
@@ -144,8 +170,8 @@ export default function About() {
               </motion.div>
             ))}
           </div>
-        <Divider className='mt-10' />
-        </div>
+          <Divider className='mt-10' />
+        </motion.div>
 
         {/* TIMELINE */}
         <div className="mx-auto">
@@ -182,10 +208,13 @@ export default function About() {
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4, delay: 0.2}}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0, scale: 0.95 },
+            visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } }
+          }}
           className="flex justify-center"
         >
           <Link href="/contact">

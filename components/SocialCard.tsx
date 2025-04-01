@@ -21,12 +21,12 @@ export default function SocialCard({ social }: SocialCardProps) {
       href={social.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-3 bg-zinc-800/50 hover:bg-zinc-700/60 transition border border-zinc-700/40 px-4 py-7 rounded-xl text-white/90 hover:text-white group"
+      className="flex items-center gap-3 bg-zinc-800/50 hover:bg-zinc-700/60 transition border border-zinc-700/40 px-4 py-7 text-white/90 hover:text-white group"
     >
       <Image
         src={social.icon_url}
         alt={social.name}
-        className="w-6 h-6 opacity-90"
+        className="w-6 h-6 opacity-90 rounded-none"
       />
       <div className="flex-1">
         <p className="font-semibold capitalize">{social.name}</p>

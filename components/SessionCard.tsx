@@ -12,7 +12,6 @@ import { formatDateFR } from "@/utils/formatDate";
 
 type SessionCardProps = {
   session: LiveSessionList;
-  index: number;
 };
 
 export default function SessionCard({ session }: SessionCardProps) {
@@ -28,26 +27,27 @@ export default function SessionCard({ session }: SessionCardProps) {
   return (
     <Card
       isBlurred
-      className="group/card w-full md:w-fit relative flex flex-row transition-all bg-gradient-to-br from-zinc-900 to-zinc-950 text-white"
+      className="group/card w-full relative flex flex-row transition-all bg-gradient-to-br from-zinc-900 to-zinc-950 text-white"
     >
       <div className="p-0 flex-1 grid grid-cols-1 md:grid-cols-2 place-items-center md:place-items-stretch">
         {!isImageLoaded && (
-          <Skeleton className="absolute left-0 top-0 w-[42%] h-full z-0 rounded-none clipped-image" />
+          <>
+            <Skeleton className="hidden md:block absolute left-0 top-0 w-[42%] h-full z-0 rounded-none clipped-image" />
+            <Skeleton className="block md:hidden w-1/2 mx-auto my-5 h-[310px] z-0" />
+          </>
         )}
         <Image
           src={session.thumbnail_url}
           alt=""
           isBlurred
-          className={`object-cover md:-translate-x-3 xl:group-hover/card:translate-x-0 h-full w-full md:min-h-[550px] lg:min-h-[430px] max-h-[350px] md:max-h-full lg:max-h-[430px] p-5 md:p-0 rounded-lg overflow-hidden md:rounded-none md:clipped-image  ${isImageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+          className={`object-cover md:-translate-x-3 xl:group-hover/card:translate-x-0 h-full w-full md:min-h-[550px] lg:min-h-[430px] max-h-[350px] md:max-h-full lg:max-h-[430px] md:p-0 rounded-lg overflow-hidden md:rounded-none md:clipped-image  ${isImageLoaded ? 'opacity-100 p-5' : 'opacity-0'} transition-opacity duration-300`}
           onLoad={() => setIsImageLoaded(true)}
         />
 
         <div className="flex flex-col text-start w-full gap-2 p-4">
           <div className="p-2 flex flex-col items-center md:items-end gap-1 text-center md:text-end">
             <h2 className="text-2xl font-semibold !tracking-wide">{session.title}</h2>
-            {/* <p className="text-md text-zinc-400">{session.artist.name}</p> */}
             <ArtistAvatar artist={session.artist} isBordered={false} size="sm" className="hidden md:block !text-md text-zinc-400 max-w-sm" />
-            {/* <h3 className="text-md text-zinc-400 !font-sans !font-semibold">{session.artist.name}</h3> */}
             <Divider className="mt-3 mb-1 w-1/3" />
             {session.published_at && <p className="font-semibold text-sm text-zinc-500">{formatDateFR(session.published_at)}</p>}
             <p className="font-secondary tracking-xxl text-sm mt-3 px-4 py-1 rounded-xl bg-zinc-500 text-white">{session.genre}</p>

@@ -5,9 +5,24 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 import ArtistCard from './ArtistCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 import type { ArtistList } from '@/types';
 import { Button, ButtonGroup } from '@heroui/react';
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.25
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
 
 type ArtistGridProps = {
   artists: ArtistList[];
@@ -51,19 +66,25 @@ export default function ArtistGrid({ artists }: ArtistGridProps) {
   if (!artists) return null;
 
   return (
-    <div className="relative overflow-hidden flex flex-col min-h-screen-minus-navbar h-screen items-center ">
+    <div className="relative overflow-hidden flex flex-col min-h-screen-minus-navbar h-screen items-center py-2">
       {/* === Slider === */}
       <div ref={emblaRef} className="overflow-hidden rounded-lg w-full h-full flex-1">
-        <div className="flex h-full">
+        <motion.div
+          className="flex h-full"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {artists.map((artist) => (
-            <div
+            <motion.div
               key={artist.id}
+              variants={itemVariants}
               className="flex-shrink-0 md:px-2 w-full  md:w-1/2 xl:w-1/3 2xl:w-1/4"
             >
               <ArtistCard artist={artist} />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* === Controls (flèches + dots) === */}
