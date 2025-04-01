@@ -15,7 +15,7 @@ export default async function Artist({ params }: ArtistProps) {
   const artist = await getArtist(slug)
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-[60%_40%] min-h-screen-minus-navbar max-w-[2000px] mx-auto w-full px-2 sm:px-8 md:px-12 xl:px-32">
+    <div className="grid grid-cols-1 xl:grid-cols-[60%_40%] min-h-screen-minus-navbar max-w-[2000px] mx-auto w-full px-4 sm:px-8 md:px-12 xl:px-32">
       <BackButton className="hidden xl:block" />
       {/* Texte à gauche */}
       <div className="text-center sm:text-start flex flex-col justify-center pt-4 pb-10 xl:pr-20">
