@@ -66,7 +66,7 @@ export default function ArtistGrid({ artists }: ArtistGridProps) {
   if (!artists) return null;
 
   return (
-    <div className="relative overflow-hidden flex flex-col min-h-screen-minus-navbar h-screen items-center py-2">
+    <div className="relative overflow-hidden flex flex-col w-full min-h-screen-minus-navbar h-screen items-center py-2">
       {/* === Slider === */}
       <div ref={emblaRef} className="overflow-hidden rounded-lg w-full h-full flex-1">
         <motion.div

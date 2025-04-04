@@ -27,14 +27,14 @@ export default async function Artist({ params }: ArtistProps) {
             Son dernier projet
           </h3>
           <div className="">
-            <MusicContainer />
+            <MusicContainer musicServices={artist.platforms.music} />
           </div>
           <Divider className="w-[70%] my-4 mx-auto sm:mx-0" />
           <h3 className="text-lg font-semibold">
             Retrouve {artist.name} ici
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 text-start">
-            {artist.socials.map((social) => (
+            {artist.platforms.social.map((social) => (
               <SocialCard key={social.slug} social={social} />
             ))}
           </div>

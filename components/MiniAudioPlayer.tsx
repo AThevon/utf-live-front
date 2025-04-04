@@ -5,6 +5,7 @@ import { useRef, useState } from 'react';
 import { Pause, Play } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@heroui/react';
+import TooltipWrapper from '@/components/TooltipWrapper';
 
 const ReactPlayer = dynamic(() => import('react-player/youtube'), { ssr: false });
 
@@ -21,19 +22,22 @@ export default function MiniAudioPlayer({ url }: Props) {
     <div className="w-full mt-2 p-2 rounded-xl bg-zinc-800/60 backdrop-blur flex flex-col gap-2 shadow-inner">
       <div className="flex items-center gap-3">
         {/* Play/Pause Button */}
-        <Button
-          isIconOnly
-          aria-label="Play/Pause"
-          color="default"
-          onPress={() => {
-            setIsPlaying((p) => !p);
-          }}
-        >
+        <TooltipWrapper content={isPlaying ? 'Pause' : 'Play'}>
+          <Button
+            isIconOnly
+            aria-label="Play/Pause"
+            color="default"
+            onPress={() => {
+              setIsPlaying((p) => !p);
+            }}
+          >
 
-          {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
-        </Button>
+            {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+          </Button>
+        </TooltipWrapper>
+
+
         {/* </button> */}
-
         <div className={`flex flex-col flex-1 gap-2 h-full mt-4 transition-transform duration-300 ${isPlaying ? '' : '-translate-y-2'}`}>
           {/* Waveform animation */}
           <motion.div

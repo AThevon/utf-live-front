@@ -10,8 +10,8 @@ export default async function Home() {
   return (
     <main className="bg-black space-y-24">
       <HeroSection />
+      <HeroSection />
       <section className="px-10">
-        <h2 className="text-3xl font-bold mb-4">Derniers lives</h2>
         <SessionGridLatest sessions={latestLiveSessions} />
       </section>
       <CTA />

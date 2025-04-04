@@ -5,7 +5,10 @@ export type Artist = {
   bio: string
   profile_image: string
   images: ImageType[]
-  socials: Social[]
+  platforms: {
+    social: Platform[];
+    music: Platform[];
+  };
   latest_session_slug: string | null
   created_at: string
   updated_at: string
@@ -26,7 +29,10 @@ export type ArtistCompact = {
   bio: string;
   profile_image: string;
   thumbnail_url: string;
-  socials: Social[];
+  platforms: {
+    social: Platform[];
+    music: Platform[];
+  };
 };
 
 export type LiveSession = {
@@ -62,7 +68,7 @@ export type ImageType = {
   is_thumbnail?: boolean
 }
 
-export type Social = {
+export type Platform = {
   name: string
   slug: string
   icon_url: string
@@ -73,5 +79,5 @@ export type Participant = {
   id: number
   name: string
   slug: string
-  socials: Social[]
+  platforms: Platform[]
 }

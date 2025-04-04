@@ -2,10 +2,11 @@ import { getLiveSession } from "@/lib/api/liveSessions";
 import Image from "next/image";
 import Link from "next/link";
 import { formatDateFR } from "@/utils/formatDate";
-import type { Participant, Social } from "@/types";
+import type { Participant, Platform } from "@/types";
 import ArtistAvatar from "@/components/ArtistAvatar";
 import LiveSessionDescription from "@/components/LiveSessionDescription";
 import { Divider } from "@heroui/react";
+import TooltipWrapper from "@/components/TooltipWrapper";
 import SocialCard from "@/components/SocialCard";
 import { CornerRightDown } from "lucide-react";
 import BackButton from "@/components/BackButton";
@@ -53,8 +54,8 @@ export default async function LiveSession({ params }: LiveSessionProps) {
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {session.artist.socials.map((social: Social) => (
-                <SocialCard key={social.slug} social={social} />
+              {session.artist.platforms.social.map((platform: Platform) => (
+                <SocialCard key={platform.slug} platform={platform} />
               ))}
             </div>
           </div>
@@ -74,22 +75,23 @@ export default async function LiveSession({ params }: LiveSessionProps) {
               <div key={p.id} className="p-5 rounded-xl transition border border-zinc-700/40 flex justify-between items-center">
                 <p className="font-semibold text-lg">{p.name}</p>
                 <div className="flex gap-2">
-                  {p.socials.map((s) => (
-                    <Link
-                      key={s.slug}
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-[5px] rounded-full bg-zinc-800/50 hover:bg-zinc-700/60 border border-zinc-700/40 transition"
-                    >
-                      <Image
-                        src={s.icon_url}
-                        alt={s.name}
-                        width={20}
-                        height={20}
-                        className="opacity-90 w-5 h-5"
-                      />
-                    </Link>
+                  {p.platforms.map((platform) => (
+                    <TooltipWrapper key={platform.slug} content={platform.name}>
+                      <Link
+                        href={platform.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-[5px] rounded-full bg-zinc-800/50 hover:bg-zinc-700/60 border border-zinc-700/40 transition"
+                      >
+                        <Image
+                          src={platform.icon_url}
+                          alt={platform.name}
+                          width={20}
+                          height={20}
+                          className="opacity-90 w-5 h-5"
+                        />
+                      </Link>
+                    </TooltipWrapper>
                   ))}
                 </div>
               </div>
