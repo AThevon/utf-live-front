@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
 import Footer from "@/components/Footer";
 import { LayoutGroup } from "framer-motion";
+import IntroOverlay from "@/components/IntroOverlay";
 
 const fontSans = Geist({
   variable: "--font-custom-sans",
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body className={`${fontSans.variable} ${fontSecondary.variable} ${fontMono.variable} font-sans text-foreground bg-background min-h-screen`}>
         <Providers>
         <LayoutGroup>
+          {/* <IntroOverlay /> */}
           <Header />
           <PageTransition>
             {children}

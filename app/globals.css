@@ -20,3 +20,100 @@ button, a.btn, label, select {
   @apply focus-visible:!outline-zinc-100;
 }
 
+/* GLITCH HERO EFFECT */
+.glitch-text {
+  position: relative;
+  color: white;
+}
+
+.glitch-text .glitch-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: cyan;
+  width: 100%;
+  overflow: hidden;
+  animation: glitchAnim 2s infinite linear alternate-reverse;
+  opacity: 0.8;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+@keyframes glitchAnim {
+  0% {
+    clip-path: inset(0% 0% 90% 0%);
+    transform: translate(2px, -2px);
+  }
+  20% {
+    clip-path: inset(20% 0% 60% 0%);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    clip-path: inset(10% 0% 40% 0%);
+    transform: translate(1px, -1px);
+  }
+  60% {
+    clip-path: inset(40% 0% 20% 0%);
+    transform: translate(-1px, 1px);
+  }
+  80% {
+    clip-path: inset(50% 0% 10% 0%);
+    transform: translate(2px, 0);
+  }
+  100% {
+    clip-path: inset(60% 0% 0% 0%);
+    transform: translate(-2px, 2px);
+  }
+}
+
+.glitch-effect {
+  animation: glitch 1.2s infinite;
+  position: relative;
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 1px 0 #2fd6d6, -1px 0 #151515;
+  }
+  20% {
+    text-shadow: -2px 1px #2fd6d6, 2px -1px #151515;
+  }
+  40% {
+    text-shadow: 2px -1px #2fd6d6, -2px 1px #151515;
+  }
+  60% {
+    text-shadow: -1px 0 #2fd6d6, 1px 0 #151515;
+  }
+  80% {
+    text-shadow: 2px 2px #2fd6d6, -2px -2px #151515;
+  }
+  100% {
+    text-shadow: 1px 0 #2fd6d6, -1px 0 #151515;
+  }
+}
+
+
+.crt-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.015),
+    rgba(255,255,255,0.015) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: flicker 0.12s infinite;
+  z-index: 10;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.5;
+  }
+}

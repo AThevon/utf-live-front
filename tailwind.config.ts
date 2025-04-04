@@ -19,13 +19,13 @@ const config: Config = {
         xxl: '.15rem',
       },
       height: {
-        'screen-minus-navbar': 'calc(100vh - 5rem)',
+        'screen-minus-navbar': 'calc(100vh - 80px)',
       },
       minHeight: {
-        'screen-minus-navbar': 'calc(100vh - 5rem)',
+        'screen-minus-navbar': 'calc(100vh - 80px)',
       },
       maxHeight: {
-        'screen-minus-navbar': 'calc(100vh - 5rem)',
+        'screen-minus-navbar': 'calc(100vh - 80px)',
       },
     },
 	},
