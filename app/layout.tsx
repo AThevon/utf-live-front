@@ -42,7 +42,7 @@ export default function RootLayout({
       <body className={`${fontSans.variable} ${fontSecondary.variable} ${fontMono.variable} font-sans text-foreground bg-background min-h-screen`}>
         <Providers>
         <LayoutGroup>
-          {/* <IntroOverlay /> */}
+          <IntroOverlay />
           <Header />
           <PageTransition>
             {children}

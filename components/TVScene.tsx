@@ -16,14 +16,8 @@ import { useSpring, a } from '@react-spring/three'
 
 export default function TVScene() {
   const spotRef = useRef<THREE.SpotLight>(null!)
-  const [showScene, setShowScene] = useState(false)
 
-  useEffect(() => {
-    const timeout = setTimeout(() => setShowScene(true), 1500)
-    return () => clearTimeout(timeout)
-  }, [])
-
-  if (showScene) return (
+  return (
     <div className="w-full h-screen-minus-navbar bg-black">
       <Canvas
         shadows
