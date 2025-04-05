@@ -20,7 +20,8 @@ export default function ContactButton({
 
   return (
     <Button
-      as={Link}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      as={Link as any}
       href="/contact"
       startContent={
         <Send

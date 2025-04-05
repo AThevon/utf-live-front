@@ -35,7 +35,7 @@ export default async function Artist({ params }: ArtistProps) {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 text-start">
             {artist.platforms.social.map((social) => (
-              <SocialCard key={social.slug} social={social} />
+              <SocialCard key={social.slug} platform={social} />
             ))}
           </div>
         </div>

@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { Button } from "@heroui/react"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
+import TooltipWrapper from "@/components/TooltipWrapper"
 
 type Props = {
   className?: string
@@ -32,21 +33,23 @@ export default function BackButton({ className }: Props) {
   }
 
   return (
-    <motion.div
-      initial={{ x: -40, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ delay: 0.6, duration: 0.4, ease: 'easeOut' }}
-      className={`absolute top-28 left-10 z-10 ${className}`}
-    >
-      <Button
-        isIconOnly
-        onPress={handleBack}
-        title="Retour"
-        variant="ghost"
-        className=""
+    <TooltipWrapper content="Retour" placement="right">
+      <motion.div
+        initial={{ x: -40, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.4, ease: 'easeOut' }}
+        className={`absolute top-28 left-10 z-10 ${className}`}
       >
-        <ArrowLeft className="w-4 h-4" />
-      </Button>
-    </motion.div>
+        <Button
+          isIconOnly
+          onPress={handleBack}
+          title="Retour"
+          variant="ghost"
+          className=""
+        >
+          <ArrowLeft className="w-4 h-4" />
+        </Button>
+      </motion.div>
+    </TooltipWrapper>
   )
 }
