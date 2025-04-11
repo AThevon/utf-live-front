@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Bebas_Neue, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import Header from "@/components/Header";
-import PageTransition from "@/components/PageTransition";
-import Footer from "@/components/Footer";
+import Header from "@/components/layout/Header";
+import PageTransition from "@/components/layout/PageTransition";
+import Footer from "@/components/layout/Footer";
 import { LayoutGroup } from "framer-motion";
-import IntroOverlay from "@/components/IntroOverlay";
+import IntroOverlay from "@/components/layout/IntroOverlay";
 
 const fontSans = Geist({
   variable: "--font-custom-sans",

@@ -5,8 +5,8 @@ import { LiveSessionList } from "@/types";
 import { Button, Card, Divider, Image, Skeleton } from "@heroui/react";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
-import MiniAudioPlayer from "@/components/MiniAudioPlayer";
-import ArtistAvatar from "@/components/ArtistAvatar";
+import MiniAudioPlayer from "@/components/audio/MiniAudioPlayer";
+import ArtistAvatar from "@/components/ui/ArtistAvatar";
 import { formatDateFR } from "@/utils/formatDate";
 
 

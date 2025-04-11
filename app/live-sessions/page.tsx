@@ -1,5 +1,12 @@
-import SessionGrid from '@/components/SessionGrid';
+import SessionGrid from '@/components/live-sessions/SessionGrid';
 import { getAllLiveSessions } from '@/lib/api/liveSessions';
+
+export const dynamic = 'force-dynamic';
+
+export const metadata = {
+  title: 'Live Sessions – Under The Flow',
+  description: 'Plongez dans nos sessions live filmées avec soin, mettant en lumière des artistes émergents de la scène urbaine.',
+};
 
 export default async function LiveSessions() {
   const liveSessions = await getAllLiveSessions();

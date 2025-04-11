@@ -11,9 +11,9 @@ import {
   NavbarMenuItem,
 } from '@heroui/react';
 import { motion } from 'framer-motion';
-import Logo from './Logo';
+import Logo from '@/components/ui/Logo';
 import Link from 'next/link';
-import ContactButton from '@/components/ContactButton';
+import ContactButton from '@/components/ui/ContactButton';
 import { useState } from 'react';
 
 const navlinks = [

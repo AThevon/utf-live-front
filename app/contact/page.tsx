@@ -1,6 +1,10 @@
-import ContactForm from '@/components/ContactForm'
-import ContactSocials from '@/components/ContactSocials'
+import ContactForm from '@/components/contact/ContactForm'
+import ContactSocials from '@/components/contact/ContactSocials'
 
+export const metadata = {
+  title: 'Contact – Under The Flow',
+  description: 'Une question, une collaboration, une idée ? Contactez l’équipe Under The Flow via notre formulaire ou nos réseaux.',
+};
 
 export default function Contact() {
   return (

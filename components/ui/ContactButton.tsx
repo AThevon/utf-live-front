@@ -27,7 +27,7 @@ export default function ContactButton({
         <Send
           className={twMerge(
             'w-5 h-5 transition-transform duration-300 pointer-events-none',
-            isActive ? 'rotate-45' : 'group-hover/btn:rotate-45'
+            isActive ? 'rotate-45 -translate-y-[1px]' : 'group-hover/btn:rotate-45 group-hover/btn:-translate-y-[1px]',
           )}
         />
       }

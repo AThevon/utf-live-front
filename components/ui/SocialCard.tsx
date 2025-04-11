@@ -3,7 +3,7 @@
 import type { Platform } from "@/types";
 import { Button, Image } from "@heroui/react";
 import Link from "next/link";
-import TooltipWrapper from "@/components/TooltipWrapper";
+import TooltipWrapper from "@/components/layout/TooltipWrapper";
 
 type SocialCardProps = {
   platform: Platform;

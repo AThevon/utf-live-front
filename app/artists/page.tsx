@@ -1,7 +1,12 @@
-import ArtistGrid from "@/components/ArtistGrid";
+import ArtistGrid from "@/components/artists/ArtistGrid";
 import { getAllArtists } from "@/lib/api/artists";
 
+export const dynamic = 'force-dynamic';
 
+export const metadata = {
+  title: 'Artistes – Under The Flow',
+  description: 'Explorez les artistes qui façonnent l’identité sonore d’Under The Flow à travers des sessions live uniques.',
+};
 
 export default async function ArtistsPage() {
   const artists = await getAllArtists()

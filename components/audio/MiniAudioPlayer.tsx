@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 import { Pause, Play } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@heroui/react';
-import TooltipWrapper from '@/components/TooltipWrapper';
+import TooltipWrapper from '@/components/layout/TooltipWrapper';
 
 const ReactPlayer = dynamic(() => import('react-player/youtube'), { ssr: false });
 

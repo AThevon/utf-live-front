@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Instagram, Youtube } from 'lucide-react';
-import Logo from './Logo'; // Ton composant logo actuel
+import Logo from '../ui/Logo'; // Ton composant logo actuel
 
 export default function Footer() {
   return (
@@ -11,7 +11,7 @@ export default function Footer() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="bg-black px-6 pt-8 pb-5"
+      className="bg-black px-6 pt-8 pb-5 z-10"
     >
       <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-20 text-center items-start">
 

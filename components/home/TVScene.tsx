@@ -89,7 +89,7 @@ export default function TVScene() {
         <spotLight
           ref={spotRef}
           position={[0.8, 2, 0]}
-          color="#dffeff"
+          color="#ffffff"
           angle={0.4}
           penumbra={1}
           intensity={15}
@@ -98,9 +98,9 @@ export default function TVScene() {
           shadow-mapSize-height={2048}
         />
 
-        <pointLight position={[0.6, 2, -3]} intensity={0.3} color="#dffeff" />
+        <pointLight position={[0.6, 2, -3]} intensity={0.3} color="#ffffff" />
 
-        <Environment preset="city" environmentIntensity={0.035} />
+        <Environment preset="city" environmentIntensity={0.023} />
 
         <group
           position={

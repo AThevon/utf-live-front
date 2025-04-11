@@ -1,6 +1,6 @@
 'use client';
 
-import SessionCard from './SessionCard';
+import SessionCard from '@/components/live-sessions/SessionCard';
 import type { LiveSessionList } from '@/types';
 import { motion } from 'framer-motion';
 

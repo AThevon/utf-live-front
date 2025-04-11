@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Button } from "@heroui/react"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
-import TooltipWrapper from "@/components/TooltipWrapper"
+import TooltipWrapper from "@/components/layout/TooltipWrapper"
 
 type Props = {
   className?: string
@@ -26,9 +26,9 @@ export default function BackButton({ className }: Props) {
 
   const handleBack = () => {
     if (referrer) {
-      router.push(referrer)
+      router.push(referrer);
     } else {
-      router.push('/')
+      router.push('/');
     }
   }
 

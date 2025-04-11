@@ -1,17 +1,27 @@
-import BackButton from "@/components/BackButton"
-import ImageSwiper from "@/components/ImageSwiper"
-import MusicContainer from "@/components/MusicContainer"
-import SocialCard from "@/components/SocialCard"
+import BackButton from "@/components/ui/BackButton"
+import ImageSwiper from "@/components/artists/ImageSwiper"
+import MusicContainer from "@/components/audio/MusicContainer"
+import SocialCard from "@/components/ui/SocialCard"
 import { getArtist } from "@/lib/api/artists"
 import { Divider } from "@heroui/react"
 
 type ArtistProps = {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
+}
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const artist = await getArtist(slug);
+
+  return {
+    title: `${artist.name} – Artiste Under The Flow`,
+    description: artist.bio?.slice(0, 160) || `Découvrez ${artist.name}, un artiste mis en lumière par Under The Flow.`,
+  };
 }
 
 export default async function Artist({ params }: ArtistProps) {
-  const { slug } = await params
-  const artist = await getArtist(slug)
+  const { slug } = await params;
+  const artist = await getArtist(slug);
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-[60%_40%] min-h-screen-minus-navbar max-w-[2000px] mx-auto w-full px-4 sm:px-8 md:px-12 xl:px-32">

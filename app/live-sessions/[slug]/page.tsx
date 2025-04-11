@@ -3,17 +3,29 @@ import Image from "next/image";
 import Link from "next/link";
 import { formatDateFR } from "@/utils/formatDate";
 import type { Participant, Platform } from "@/types";
-import ArtistAvatar from "@/components/ArtistAvatar";
-import LiveSessionDescription from "@/components/LiveSessionDescription";
+import ArtistAvatar from "@/components/ui/ArtistAvatar";
+import LiveSessionDescription from "@/components/live-sessions/LiveSessionDescription";
 import { Divider } from "@heroui/react";
-import TooltipWrapper from "@/components/TooltipWrapper";
-import SocialCard from "@/components/SocialCard";
+import TooltipWrapper from "@/components/layout/TooltipWrapper";
+import SocialCard from "@/components/ui/SocialCard";
 import { CornerRightDown } from "lucide-react";
-import BackButton from "@/components/BackButton";
+import BackButton from "@/components/ui/BackButton";
 
 type LiveSessionProps = {
-  params: Promise<{ slug: string }>;
+  params: { slug: string }
 };
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const session = await getLiveSession(slug);
+
+  return {
+    title: `${session.title} – Live Session | Under The Flow`,
+    description:
+      session.description?.slice(0, 160) ||
+      `Regardez la session live "${session.title}" sur Under The Flow, une performance unique d’un·e artiste de la scène urbaine.`,
+  };
+}
 
 export default async function LiveSession({ params }: LiveSessionProps) {
   const { slug } = await params;
@@ -39,14 +51,15 @@ export default async function LiveSession({ params }: LiveSessionProps) {
         <div className="flex-1 ">
           <div className="flex flex-col sm:flex-row gap-3 md:gap-0 justify-between items-center sm:px-4">
             <ArtistAvatar artist={session.artist} className="" />
-            <p className="text-sm text-zinc-500">
-              Publiée le {formatDateFR(session.published_at)}
-            </p>
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <p className="text-sm text-zinc-500">
+                Publiée le {formatDateFR(session.published_at)}
+              </p>
+              <p className="font-secondary tracking-xxl text-sm px-4 py-1 rounded-xl bg-zinc-500 text-white">{session.genre}</p>
+            </div>
           </div>
           <Divider className="my-6 mx-auto w-[98%]" />
           <LiveSessionDescription description={session.description} session={session} />
-
-
           {/* Socials */}
           <div className="pt-8">
             <h3 className="text-lg font-semibold mb-3 text-white/90">

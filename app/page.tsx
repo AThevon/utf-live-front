@@ -1,33 +1,36 @@
-// Version avec effet "glitch" sur le h1
-// et un "typewriter" (texte qui s'affiche caractère par caractère) sur la catchphrase
-
-import HeroSection from '@/components/HeroSection'
-import CTA from '@/components/CTA'
+import TextReveal from '@/components/home/TextReveal'
+import CTA from '@/components/home/CTA'
 import { getLatestLiveSession } from '@/lib/api/liveSessions'
-import SessionGridLatest from '@/components/SessionGridLatest'
-import TVScene from '@/components/TVScene'
-import HeroInfos from '@/components/HeroInfos'
+import LatestSessionsGrid from '@/components/home/LatestSessionsGrid'
+import TVScene from '@/components/home/TVScene'
+import HeroInfos from '@/components/home/HeroInfos'
+import BackgroundBlurSpheres from '@/components/home/BackgroundBlurSpheres'
+import LatestSession from '@/components/home/LatestSession'
+
+export const dynamic = 'force-dynamic';
+
+export const metadata = {
+  title: 'Under The Flow – Sessions live et culture urbaine',
+  description: 'Under The Flow est une plateforme dédiée aux live sessions musicales et à la culture urbaine émergente. Découvrez des performances uniques et des artistes authentiques.',
+};
 
 export default async function Home() {
   const latestLiveSessions = await getLatestLiveSession()
 
   return (
-    <div className="!bg-black">
-      <div className="relative h-screen-minus-navbar grid grid-cols-1 md:grid-cols-2">
-        {/* LEFT CONTENT */}
+    <>
+      <BackgroundBlurSpheres />
+      <section className="relative z-10 h-screen-minus-navbar grid grid-cols-1 md:grid-cols-2">
         <HeroInfos />
-
         <div className="absolute inset-0 z-0 w-screen">
           <TVScene />
         </div>
-      </div>
-
-      <HeroSection />
-      <section id="sessions" className="px-10 my-24">
-        <SessionGridLatest sessions={latestLiveSessions} />
       </section>
+      <TextReveal />
+      <LatestSession session={latestLiveSessions[0]} />
+      <LatestSessionsGrid sessions={latestLiveSessions} />
       <CTA />
-    </div>
+    </>
   )
 }
 

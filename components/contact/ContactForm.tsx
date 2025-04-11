@@ -1,6 +1,6 @@
 'use client'
 
-import { Form, Input, Textarea, Button, Card, addToast, Checkbox } from '@heroui/react'
+import { Form, Input, Textarea, Button, Card, addToast } from '@heroui/react'
 import { useState } from 'react'
 import { sendContactMessage } from '@/lib/api/contact'
 import { Mail } from 'lucide-react'
@@ -27,7 +27,6 @@ export default function ContactForm() {
       title: 'Envoi du message...',
       description: 'Merci de patienter pendant l’envoi.',
       promise: promise,
-      loadingIcon: true,
       timeout: 10,
     })
 
@@ -64,10 +63,7 @@ export default function ContactForm() {
         <Input id="email" name="email" label="Email" type="email" isRequired radius='sm' />
         <Input id="subject" name="subject" label="Sujet" isRequired radius='sm' />
         <Textarea id="message" name="message" label="Message" isRequired minRows={6} radius='sm' />
-        <Checkbox id="newsletter" name="newsletter" color='default' className="">
-          Je veux être informé quand un nouveau live sort
-        </Checkbox>
-        <Button type="submit" className="w-full bg-white text-black" radius='sm' size='lg' isLoading={loading} startContent={loading ? "" : <Mail className="h-6" />}>
+        <Button type="submit" className="w-full bg-white text-black" radius='sm' size='lg' isLoading={loading} startContent={loading ? "" : <Mail className="h-6 mb-0.5" />}>
           Envoyer le message
         </Button>
       </Form>

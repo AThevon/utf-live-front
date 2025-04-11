@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import MusicPlayer from "./MusicPlayer";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Platform } from "@/types";
@@ -52,7 +51,14 @@ export default function MusicContainer({ musicServices }: MusicContainerProps) {
 
       {/* Player iframe auto-adapté à la place dispo */}
       <div className="w-full h-[152px]">
-        <MusicPlayer embedUrl={musicService.url} />
+        <iframe
+          src={musicService.url}
+          loading="lazy"
+          allow="encrypted-media; autoplay"
+          className="h-full w-full rounded-2xl shadow-lg"
+          width="100%"
+          height="100%"
+        ></iframe>
       </div>
     </div>
   )
