@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Instagram, Youtube } from 'lucide-react';
-import Logo from '../ui/Logo'; // Ton composant logo actuel
+import Logo from '@/components/ui/Logo';
 
 export default function Footer() {
   return (
@@ -56,7 +56,7 @@ export default function Footer() {
           </h3>
           <div className="flex flex-col items-center md:items-start gap-2">
             <Link
-              href="https://instagram.com/utflive"
+              href="https://instagram.com/utf_live"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-pink-500 transition-colors flex items-center gap-2"
@@ -66,7 +66,7 @@ export default function Footer() {
               Instagram
             </Link>
             <Link
-              href="https://youtube.com/@utflive"
+              href="https://youtube.com/@UnderTheFlow_live"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-red-500 transition-colors flex items-center gap-2"

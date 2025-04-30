@@ -12,10 +12,15 @@ import { CornerRightDown } from "lucide-react";
 import BackButton from "@/components/ui/BackButton";
 
 type LiveSessionProps = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata({ params }) {
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const session = await getLiveSession(slug);
 

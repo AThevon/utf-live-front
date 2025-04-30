@@ -6,16 +6,22 @@ import { getArtist } from "@/lib/api/artists"
 import { Divider } from "@heroui/react"
 
 type ArtistProps = {
-  params: { slug: string }
-}
+  params: Promise<{ slug: string }>;
+};
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const artist = await getArtist(slug);
 
   return {
     title: `${artist.name} – Artiste Under The Flow`,
-    description: artist.bio?.slice(0, 160) || `Découvrez ${artist.name}, un artiste mis en lumière par Under The Flow.`,
+    description:
+      artist.bio?.slice(0, 160) ||
+      `Découvrez ${artist.name}, un artiste mis en lumière par Under The Flow.`,
   };
 }
 
