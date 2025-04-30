@@ -62,7 +62,7 @@ export default function ContactSocials() {
             isBlurred
             src="/utf-logo.png"
             alt="Logo Under The Flow"
-            className="object-contain w-full h-full"
+            className="object-contain w-full max-h-[500px] rounded-full"
           />
         </motion.div>
         <div className="absolute inset-0 rounded-full pointer-events-none blur-2xl bg-gradient-to-br from-cyan-700/20 via-zinc-500/20 to-cyan-500/20 animate-pulse [animation-duration:4s]" />
