@@ -7,6 +7,7 @@ import PageTransition from "@/components/layout/PageTransition";
 import Footer from "@/components/layout/Footer";
 import { LayoutGroup } from "framer-motion";
 import IntroOverlay from "@/components/layout/IntroOverlay";
+import { GoogleAnalytics  } from '@next/third-parties/google'
 
 const fontSans = Geist({
   variable: "--font-custom-sans",
@@ -51,6 +52,7 @@ export default function RootLayout({
         </LayoutGroup>
         </Providers>
       </body>
+      <GoogleAnalytics gaId="G-V09HM6CECL" />
     </html>
   );
 }
