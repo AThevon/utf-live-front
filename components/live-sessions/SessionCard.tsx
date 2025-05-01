@@ -54,7 +54,9 @@ export default function SessionCard({ session }: SessionCardProps) {
           </div>
 
           <div className="mt-auto">
+            <div className="hidden lg:block">
             <MiniAudioPlayer url={session.video_url} />
+            </div>
           </div>
 
           <Button
