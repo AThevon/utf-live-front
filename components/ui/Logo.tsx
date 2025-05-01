@@ -5,8 +5,8 @@ export default function Logo({ className }: { className?: string }) {
     <Image
       src="/utf-logo.png"
       alt="Logo"
-      width={36}
-      height={36}
+      width={1000}
+      height={1000}
       className={`${className} rounded-full`}
       priority
     />
