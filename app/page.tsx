@@ -10,7 +10,7 @@ import LatestSession from '@/components/home/LatestSession'
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Under The Flow – Sessions live et culture urbaine',
+  title: 'Under The Flow',
   description: 'Under The Flow est une plateforme dédiée aux live sessions musicales et à la culture urbaine émergente. Découvrez des performances uniques et des artistes authentiques.',
 };
 
