@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Under The Flow
 
-First, run the development server:
+Under The Flow is a fullstack web application for showcasing live music sessions recorded and produced by a small creative team. This repository contains the frontend codebase built with Next.js 15.
+
+---
+
+## 📦 Tech Stack
+
+- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS + custom design tokens
+- **UI Library**: [@heroui/react](https://www.npmjs.com/package/@heroui/react)
+- **Icons**: [Lucide Icons](https://lucide.dev/)
+- **Animation**: [Framer Motion](https://www.framer.com/motion/)
+- **Fonts**: Google Fonts (Geist, Bebas Neue, Geist Mono)
+
+---
+
+## 🔌 Integrations
+
+- **Analytics**: Google Analytics (via `@next/third-parties/google`)
+- **SEO**: Structured metadata via `metadata` API in Next.js
+- **PWA**: Basic support via `site.webmanifest` and mobile meta tags
+- **Deployment**: Vercel (CI/CD on `main` push)
+
+---
+
+## 🧠 Core Features
+
+- Dynamic routing with App Router
+- Custom page transitions and intro animations
+- Responsive UI with layout components (Header, Footer, Overlay)
+- Embedded video sessions from YouTube
+- Image optimizations and proper favicon setup
+- Semantic metadata and Open Graph tags
+- Global providers setup via `app/providers.tsx`
+
+---
+
+## 📁 Project Structure Highlights
+
+- `app/`: App Router entrypoint with layout and page definitions
+- `components/layout`: Header, Footer, PageTransition, IntroOverlay, TooltipWrapper
+- `public/`: Includes all favicon, manifest and social preview images
+- `styles/`: Tailwind base styles and globals
+
+---
+
+## 🚀 Deployment
+
+This project is continuously deployed on **Vercel** from the main Git branch.
+
+Production URL: [https://undertheflow.com](https://undertheflow.com)
+
+---
+
+## 🧪 Dev Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Required Node version: `>=18`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
