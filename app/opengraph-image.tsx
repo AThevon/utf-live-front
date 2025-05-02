@@ -24,6 +24,7 @@ export default async function Image() {
           display: 'flex',
           alignItems: 'flex-end',
           justifyContent: 'flex-start',
+          backgroundColor: '#000',
         }}
       >
         {/* Background */}
@@ -33,9 +34,11 @@ export default async function Image() {
           style={{
             position: 'absolute',
             inset: 0,
+            transform: 'translateX(15%)',
+            marginLeft: 'auto',
             width: '100%',
             height: '100%',
-            objectFit: 'cover',
+            objectFit: 'contain',
           }}
         />
 
@@ -44,10 +47,10 @@ export default async function Image() {
           src={`data:image/png;base64,${Buffer.from(logoData).toString('base64')}`}
           alt="UTF Logo"
           style={{
-            width: 100,
-            height: 100,
-            margin: 40,
-            opacity: 0.8,
+            width: 320,
+            height: 320,
+            marginLeft: 92,
+            marginBottom: 40,
           }}
         />
       </div>
