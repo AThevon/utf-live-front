@@ -6,6 +6,13 @@ export const dynamic = 'force-dynamic';
 export const metadata = {
   title: 'Artistes – Under The Flow',
   description: 'Explorez les artistes qui façonnent l’identité sonore d’Under The Flow à travers des sessions live uniques.',
+  openGraph: {
+    images: ['/artists/opengraph-image'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/artists/opengraph-image'],
+  },
 };
 
 export default async function ArtistsPage() {
