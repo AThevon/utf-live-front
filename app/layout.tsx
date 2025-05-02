@@ -31,6 +31,9 @@ const fontMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Under The Flow",
   description: "Under The Flow est un projet de live sessions musical.",
+  appleWebApp: {
+    title: 'UTF Live',
+  },
 };
 
 export default function RootLayout({
