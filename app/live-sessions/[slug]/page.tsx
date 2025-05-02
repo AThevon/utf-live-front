@@ -29,8 +29,28 @@ export async function generateMetadata({
     description:
       session.description?.slice(0, 160) ||
       `Regardez la session live "${session.title}" sur Under The Flow, une performance unique d’un·e artiste de la scène urbaine.`,
+    openGraph: {
+      title: `${session.title} – Live Session | Under The Flow`,
+      description:
+        session.description?.slice(0, 160) ||
+        `Regardez la session live "${session.title}" sur Under The Flow.`,
+      url: `https://www.undertheflow.com/live-sessions/${slug}`,
+      images: [
+        {
+          url: `https://www.undertheflow.com/live-sessions/${slug}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `Image OG pour la session "${session.title}"`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: [`https://www.undertheflow.com/live-sessions/${slug}/opengraph-image`],
+    },
   };
 }
+
 
 export default async function LiveSession({ params }: LiveSessionProps) {
   const { slug } = await params;

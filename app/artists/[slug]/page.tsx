@@ -22,6 +22,25 @@ export async function generateMetadata({
     description:
       artist.bio?.slice(0, 160) ||
       `Découvrez ${artist.name}, un artiste mis en lumière par Under The Flow.`,
+    openGraph: {
+      title: `${artist.name} – Artiste Under The Flow`,
+      description:
+        artist.bio?.slice(0, 160) ||
+        `Découvrez ${artist.name}, un artiste mis en lumière par Under The Flow.`,
+      url: `https://www.undertheflow.com/artists/${slug}`,
+      images: [
+        {
+          url: `https://www.undertheflow.com/artists/${slug}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `Image OG de ${artist.name}`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: [`https://www.undertheflow.com/artists/${slug}/opengraph-image`],
+    },
   };
 }
 
