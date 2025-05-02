@@ -4,31 +4,29 @@ import { ArrowLeft } from "lucide-react"
 import { motion } from "framer-motion"
 import { Button } from "@heroui/react"
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useRef } from "react"
 import TooltipWrapper from "@/components/layout/TooltipWrapper"
 
 type Props = {
   className?: string
+  fallbackUrl?: string
 }
 
-export default function BackButton({ className }: Props) {
+export default function BackButton({ className, fallbackUrl = "/" }: Props) {
   const router = useRouter()
-  const [referrer, setReferrer] = useState<string | null>(null)
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const previous = sessionStorage.getItem("previous-path")
-      if (previous && previous !== window.location.pathname) {
-        setReferrer(previous)
-      }
-    }
-  }, [])
+  const hasNavigated = useRef(false)
 
   const handleBack = () => {
-    if (referrer) {
-      router.push(referrer);
+    // On essaye de revenir en arrière
+    if (typeof window !== "undefined") {
+      if (window.history.length > 2 && !hasNavigated.current) {
+        hasNavigated.current = true
+        router.back()
+      } else {
+        router.push(fallbackUrl)
+      }
     } else {
-      router.push('/');
+      router.push(fallbackUrl)
     }
   }
 
@@ -45,7 +43,6 @@ export default function BackButton({ className }: Props) {
           onPress={handleBack}
           title="Retour"
           variant="ghost"
-          className=""
         >
           <ArrowLeft className="w-4 h-4" />
         </Button>

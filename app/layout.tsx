@@ -43,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${fontSans.variable} ${fontSecondary.variable} ${fontMono.variable} font-sans text-foreground bg-background min-h-screen`}>
+      <body className={`${fontSans.variable} ${fontSecondary.variable} ${fontMono.variable} dark font-sans text-foreground bg-background min-h-screen`}>
         <Providers>
         <LayoutGroup>
           <IntroOverlay />
