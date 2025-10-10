@@ -1,6 +1,7 @@
-import TextReveal from '@/components/home/TextReveal'
+import ArtistGallery from '@/components/home/ArtistGallery'
 import CTA from '@/components/home/CTA'
 import { getLatestLiveSession } from '@/lib/api/liveSessions'
+import { getRandomArtistImages } from '@/lib/api/artists'
 import LatestSessionsGrid from '@/components/home/LatestSessionsGrid'
 import HeroInfos from '@/components/home/HeroInfos'
 import BackgroundBlurSpheres from '@/components/home/BackgroundBlurSpheres'
@@ -16,17 +17,18 @@ export const metadata = {
 
 export default async function Home() {
   const latestLiveSessions = await getLatestLiveSession()
+  const randomArtists = await getRandomArtistImages(12)
 
   return (
     <>
       <BackgroundBlurSpheres />
-      <div className="relative h-[90vh]">
+      <div className="relative h-[150vh]">
         <HeroImage />
         <div className="absolute top-0 left-0 w-full">
           <HeroInfos />
         </div>
       </div>
-      <TextReveal />
+      <ArtistGallery artists={randomArtists} />
       <LatestSession session={latestLiveSessions[0]} />
       <LatestSessionsGrid sessions={latestLiveSessions} />
       <CTA />

@@ -1,4 +1,4 @@
-import type { Artist, ArtistList } from '@/types';
+import type { Artist, ArtistList, RandomArtistImage } from '@/types';
 
 function getApiUrl(): string {
 	const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -40,5 +40,22 @@ export async function getArtist(slug: string): Promise<Artist> {
 	} catch (error) {
 		console.error(`Failed to fetch artist ${slug}:`, error);
 		throw new Error('Impossible de récupérer cet artiste');
+	}
+}
+
+export async function getRandomArtistImages(count: number = 12): Promise<RandomArtistImage[]> {
+	try {
+		const res = await fetch(`${getApiUrl()}/api/artists/random-images?count=${count}`, {
+			cache: 'no-store' // Toujours random
+		});
+
+		if (!res.ok) {
+			throw new Error(`API error: ${res.status} ${res.statusText}`);
+		}
+
+		return await res.json();
+	} catch (error) {
+		console.error('Failed to fetch random artist images:', error);
+		return [];
 	}
 }
