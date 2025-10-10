@@ -17,12 +17,12 @@ export const metadata = {
 
 export default async function Home() {
   const latestLiveSessions = await getLatestLiveSession()
-  const randomArtists = await getRandomArtistImages(12)
+  const randomArtists = await getRandomArtistImages(9)
 
   return (
     <>
       <BackgroundBlurSpheres />
-      <div className="relative h-[150vh]">
+      <div className="relative h-[100vh]">
         <HeroImage />
         <div className="absolute top-0 left-0 w-full">
           <HeroInfos />
