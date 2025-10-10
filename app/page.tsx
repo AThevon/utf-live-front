@@ -2,7 +2,6 @@ import TextReveal from '@/components/home/TextReveal'
 import CTA from '@/components/home/CTA'
 import { getLatestLiveSession } from '@/lib/api/liveSessions'
 import LatestSessionsGrid from '@/components/home/LatestSessionsGrid'
-import TVScene from '@/components/home/TVScene'
 import HeroInfos from '@/components/home/HeroInfos'
 import BackgroundBlurSpheres from '@/components/home/BackgroundBlurSpheres'
 import LatestSession from '@/components/home/LatestSession'
@@ -22,9 +21,6 @@ export default async function Home() {
       <BackgroundBlurSpheres />
       <section className="relative z-10 h-screen-minus-navbar grid grid-cols-1 md:grid-cols-2">
         <HeroInfos />
-        <div className="absolute inset-0 z-0 w-screen">
-          <TVScene />
-        </div>
       </section>
       <TextReveal />
       <LatestSession session={latestLiveSessions[0]} />
