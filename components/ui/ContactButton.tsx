@@ -19,7 +19,7 @@ export default function ContactButton({
   const isActive = activeMatch && pathname === '/contact';
 
   return (
-    <div className="relative inline-block group/btn">
+    <div className="relative w-full md:w-fit inline-block group/btn">
       <div className="absolute inset-0 rounded-md bg-cyan-400/50 blur-lg transition-all duration-300 opacity-0 group-hover/btn:opacity-100" />
       <Button
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

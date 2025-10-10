@@ -26,28 +26,26 @@ const container = {
   }
 }
 
-const description = `Under The Flow, c’est une vision. Celle d’un son brut. D’un regard sincère. D’un moment qui compte.
+const description = `UTF, c'est simple : une vieille télé, du matos de qualité, des artistes authentiques.
 
-Pas juste une captation. Pas juste un live. Ici, chaque session est une expérience. Un shoot d’émotion, capté avec exigence.
+Zéro filtre. On capte le son, l'image, la vibe. En live.
 
-On bosse comme un crew : réal, ingé son, photo — tout est calé pour servir le vrai. Le son est propre, l’image est soignée, la vibe est intacte.
+Chaque session est mixée, masterisée, filmée avec soin. On bosse en crew pour servir l'artiste et l'instant.
 
-Chaque artiste vient poser son énergie. On la capte en audio, en vidéo, et en photo. C’est une trace. Un instant figé dans le temps. Une manière de dire : "j’étais là, à ce moment précis."
-
-Under The Flow, c’est une scène alternative, stylée, libre. Un terrain de jeu pour les artistes qui veulent montrer qui ils sont, sans détour.`
+C'est une trace. Un moment capturé tel quel.`
 
 const founders = [
   {
     name: 'Nitro Vision',
     img: '/nitro.png',
     role: 'Réalisateur / Directeur photo',
-    text: `Fondateur d’UTF et œil derrière la caméra, Nitro capte l’essence de chaque session avec une esthétique précise et organique.\n\nSon approche minimaliste sublime l’instant sans jamais le trahir.\nMontage, cadrage, lumière : sa signature est dans la discrétion.`
+    text: `Fondateur d'UTF et œil derrière la caméra.\n\nCadrage, lumière, montage. Il filme l'instant sans l'altérer.`
   },
   {
     name: 'Oniji',
     img: '/oniji.png',
     role: 'Ingénieur son / Mix / Mastering',
-    text: `Architecte sonore d’Under The Flow, Oniji conçoit chaque prise comme une photographie du son vivant.\n\nEntre précision technique et écoute émotionnelle, il signe une patte brute mais maîtrisée. Un son sans artifice, calibré au millimètre.`
+    text: `Ingénieur son d'UTF.\n\nMix et mastering. Un son brut, propre, sans artifice.`
   }
 ]
 
@@ -130,7 +128,7 @@ export default function AboutContainer() {
             variants={fadeUp}
             className="text-zinc-500 italic mt-6"
           >
-            {`“La musique est un instant. Une vibration. Un souffle.”`}
+            {`"On filme pas un concert. On capture un instant."`}
           </motion.p>
         </motion.div>
 
