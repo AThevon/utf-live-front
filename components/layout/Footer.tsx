@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Instagram, Youtube } from 'lucide-react';
 import Logo from '@/components/ui/Logo';
+import GrooverWidget from '@/components/layout/GrooverWidget';
 
 export default function Footer() {
   return (
@@ -13,6 +14,10 @@ export default function Footer() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="bg-black px-6 pt-8 pb-5 z-10"
     >
+      <div className="mb-12">
+        <GrooverWidget />
+      </div>
+
       <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-20 text-center items-start">
 
         {/* Liens */}
@@ -79,7 +84,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-10 text-center text-xs">
+      <div className="text-center text-xs mt-10">
         © {new Date().getFullYear()} UTF Live. Tous droits réservés.
       </div>
     </motion.footer>
