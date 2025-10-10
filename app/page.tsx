@@ -5,6 +5,7 @@ import LatestSessionsGrid from '@/components/home/LatestSessionsGrid'
 import HeroInfos from '@/components/home/HeroInfos'
 import BackgroundBlurSpheres from '@/components/home/BackgroundBlurSpheres'
 import LatestSession from '@/components/home/LatestSession'
+import HeroImage from '@/components/home/HeroImage'
 
 export const dynamic = 'force-dynamic';
 
@@ -19,9 +20,12 @@ export default async function Home() {
   return (
     <>
       <BackgroundBlurSpheres />
-      <section className="relative z-10 h-screen-minus-navbar grid grid-cols-1 md:grid-cols-2">
-        <HeroInfos />
-      </section>
+      <div className="relative h-[90vh]">
+        <HeroImage />
+        <div className="absolute top-0 left-0 w-full">
+          <HeroInfos />
+        </div>
+      </div>
       <TextReveal />
       <LatestSession session={latestLiveSessions[0]} />
       <LatestSessionsGrid sessions={latestLiveSessions} />
