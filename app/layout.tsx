@@ -33,7 +33,9 @@ export const metadata: Metadata = {
   description: "Under The Flow est un projet de live sessions musical.",
   appleWebApp: {
     title: 'UTF Live',
+    statusBarStyle: 'black-translucent',
   },
+  themeColor: '#000000',
 };
 
 export default function RootLayout({
