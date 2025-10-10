@@ -26,9 +26,9 @@ export default function HeroImage() {
   const opacity = useTransform(scrollYProgress, [0.7, 1], [1, 0]);
 
   return (
-    <div ref={containerRef} className="h-[150vh]">
+    <div ref={containerRef} className="h-[170vh]">
       <motion.div
-        className="sticky top-0 h-screen w-full overflow-hidden"
+        className="sticky top-0 h-[calc(100vh-80px)] w-full overflow-hidden"
         style={{
           scale,
           borderRadius,

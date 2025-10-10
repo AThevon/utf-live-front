@@ -20,22 +20,22 @@ export default function HeroInfos() {
   const opacity = useTransform(scrollYProgress, [0, 0.5, 0.8, 1], [1, 1, 0.5, 0])
 
   return (
-    <div ref={containerRef} className="h-[100vh]">
+    <div ref={containerRef} className="h-[90vh]">
       <motion.div
-        className="sticky top-0 z-10 w-full flex flex-col items-center md:items-start justify-center md:px-20 xl:px-40 py-10 md:py-0 h-screen space-y-6"
+        className="sticky top-0 z-10 w-full flex flex-col items-center justify-center pt-12 h-[calc(100vh-80px)] space-y-8"
         style={{ y, opacity }}
       >
         <div>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight glitch-text relative text-center md:text-start">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight tracking-tight glitch-text relative text-center">
             Under The Flow
             <span className="glitch-layer" aria-hidden="true">Under The Flow</span>
           </h1>
-          <div className="text-zinc-400 text-lg md:text-3xl font-medium text-center md:text-start w-full">
+          <div className="text-zinc-400 text-lg md:text-3xl font-medium text-center w-full">
             <Typewriter
               words={[
-                "Des artistes. Une vibe. Une scène.",
-                "Bienvenue dans l'underground de demain.",
-                "Une expérience immersive, sonore et visuelle.",
+                "Branche la télé, monte le son.",
+                "Raw sessions, real artists.",
+                "Tous les styles. Zéro filtre.",
               ]}
               loop
               cursor
@@ -46,14 +46,10 @@ export default function HeroInfos() {
             />
           </div>
         </div>
-
-        <p className="italic w-full text-zinc-400 text-sm md:text-base max-w-md text-center md:text-start">
-          &quot;Là où le silence résonne, la musique prend la parole.&quot;
-        </p>
         <div className="flex flex-col md:flex-row items-center gap-3">
           <Button
             as={Link}
-            className='btn group/btn w-full md:w-auto py-6 bg-white text-black border-white'
+            className='btn group/btn w-full py-6 bg-white text-black border-white'
             href="/live-sessions"
             variant="solid"
             size="lg"
@@ -63,7 +59,7 @@ export default function HeroInfos() {
           </Button>
           <Button
             as={Link}
-            className='btn group/btn w-full md:w-auto py-6'
+            className='btn group/btn w-full py-6'
             href="/artists"
             variant="solid"
             size="lg"
