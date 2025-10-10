@@ -5,18 +5,25 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 
 export default function IntroOverlay() {
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    document.body.classList.add('overflow-hidden')
-    const timeout = setTimeout(() => {
-      setVisible(false)
-      document.body.classList.remove('overflow-hidden')
-    }, 1000)
+    const hasSeenIntro = sessionStorage.getItem('hasSeenIntro')
 
-    return () => {
-      clearTimeout(timeout)
-      document.body.classList.remove('overflow-hidden')
+    if (!hasSeenIntro) {
+      setVisible(true)
+      document.body.classList.add('overflow-hidden')
+
+      const timeout = setTimeout(() => {
+        setVisible(false)
+        document.body.classList.remove('overflow-hidden')
+        sessionStorage.setItem('hasSeenIntro', 'true')
+      }, 1000)
+
+      return () => {
+        clearTimeout(timeout)
+        document.body.classList.remove('overflow-hidden')
+      }
     }
   }, [])
 

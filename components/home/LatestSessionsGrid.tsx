@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import SessionCard from '@/components/live-sessions/SessionCard';
 import type { LiveSessionList } from '@/types';
 
@@ -9,7 +9,7 @@ type LatestSessionsGridProps = {
 };
 
 // Animation config
-const container = {
+const container: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -19,9 +19,9 @@ const container = {
   },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, x: 20 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+  show: { opacity: 1, x: 0 },
 };
 
 export default function LatestSessionsGrid({ sessions }: LatestSessionsGridProps) {
@@ -44,7 +44,11 @@ export default function LatestSessionsGrid({ sessions }: LatestSessionsGridProps
         viewport={{ once: true, amount: 0.2 }}
       >
         {sessions.map((session, index) => (
-          <motion.div key={index} variants={item}>
+          <motion.div
+            key={index}
+            variants={item}
+            transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          >
             <SessionCard session={session} />
           </motion.div>
         ))}

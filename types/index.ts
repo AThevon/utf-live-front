@@ -81,3 +81,10 @@ export type Participant = {
   slug: string
   platforms: Platform[]
 }
+
+export type RandomArtistImage = {
+  id: number
+  name: string
+  slug: string
+  image_url: string
+}

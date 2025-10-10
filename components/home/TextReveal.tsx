@@ -9,21 +9,21 @@ const blocks = [
   },
   {
     title: 'Lumières basses',
-    subtitle: 'L’espace devient matière',
+    subtitle: "L'espace devient matière",
   },
   {
     title: 'Le micro attend',
-    subtitle: 'L’instant retient son souffle',
+    subtitle: "L'instant retient son souffle",
   },
   {
     title: 'Under The Flow',
-    subtitle: 'Rien n’est joué. Tout est vrai.',
+    subtitle: "Rien n'est joué. Tout est vrai.",
   },
 ]
 
 export default function TextReveal() {
   return (
-    <section className="relative w-full text-white font-sans tracking-wide pt-60 pb-20 px-4 sm:px-12">
+    <section className="relative w-full text-white font-sans tracking-wide py-20 px-4 sm:px-12">
       <div className="max-w-6xl mx-auto space-y-40">
         {blocks.map((block, index) => {
           const isEven = index % 2 === 0
