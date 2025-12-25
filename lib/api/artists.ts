@@ -15,7 +15,14 @@ async function handleApiResponse<T>(response: Response): Promise<T> {
 		);
 	}
 
-	const data = await response.json();
+	// Workaround: clean response if there's garbage before JSON
+	let text = await response.text();
+	const jsonStart = text.indexOf('{');
+	if (jsonStart > 0) {
+		text = text.slice(jsonStart);
+	}
+
+	const data = JSON.parse(text);
 	return data.data;
 }
 
@@ -53,7 +60,14 @@ export async function getRandomArtistImages(count: number = 12): Promise<RandomA
 			throw new Error(`API error: ${res.status} ${res.statusText}`);
 		}
 
-		return await res.json();
+		// Workaround: clean response if there's garbage before JSON
+		let text = await res.text();
+		const jsonStart = text.indexOf('[');
+		if (jsonStart > 0) {
+			text = text.slice(jsonStart);
+		}
+
+		return JSON.parse(text);
 	} catch (error) {
 		console.error('Failed to fetch random artist images:', error);
 		return [];

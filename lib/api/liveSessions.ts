@@ -15,7 +15,14 @@ async function handleApiResponse<T>(response: Response): Promise<T> {
 		);
 	}
 
-	const data = await response.json();
+	// Workaround: clean response if there's garbage before JSON
+	let text = await response.text();
+	const jsonStart = text.indexOf('{');
+	if (jsonStart > 0) {
+		text = text.slice(jsonStart);
+	}
+
+	const data = JSON.parse(text);
 	return data.data;
 }
 
