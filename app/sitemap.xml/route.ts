@@ -1,11 +1,10 @@
 import { getAllArtists } from '@/lib/api/artists'
 import { getAllLiveSessions } from '@/lib/api/liveSessions'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   const baseUrl = 'https://www.undertheflow.com'
-
-  const artists = await getAllArtists()
-  const sessions = await getAllLiveSessions()
 
   // Pages statiques visibles sur le front
   const staticRoutes = [
@@ -16,9 +15,23 @@ export async function GET() {
     '/live-sessions'
   ]
 
-  // Slugs dynamiques
-  const artistRoutes = artists.map((artist) => `/artists/${artist.slug}`)
-  const sessionRoutes = sessions.map((session) => `/live-sessions/${session.slug}`)
+  // Slugs dynamiques - avec gestion d'erreur pour éviter de bloquer le build
+  let artistRoutes: string[] = []
+  let sessionRoutes: string[] = []
+
+  try {
+    const artists = await getAllArtists()
+    artistRoutes = artists.map((artist) => `/artists/${artist.slug}`)
+  } catch (error) {
+    console.error('Sitemap: Failed to fetch artists', error)
+  }
+
+  try {
+    const sessions = await getAllLiveSessions()
+    sessionRoutes = sessions.map((session) => `/live-sessions/${session.slug}`)
+  } catch (error) {
+    console.error('Sitemap: Failed to fetch sessions', error)
+  }
 
   const allRoutes = [...staticRoutes, ...artistRoutes, ...sessionRoutes]
 

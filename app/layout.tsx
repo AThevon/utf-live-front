@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -35,6 +35,9 @@ export const metadata: Metadata = {
     title: 'UTF Live',
     statusBarStyle: 'black-translucent',
   },
+};
+
+export const viewport: Viewport = {
   themeColor: '#000000',
 };
 
