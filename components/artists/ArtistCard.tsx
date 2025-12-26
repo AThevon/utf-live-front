@@ -32,17 +32,19 @@ export default function ArtistCard({ artist }: ArtistCardProps) {
       onPress={navigateToArtist}
     >
       <CardBody className="overflow-hidden p-0">
-        {!isImageLoaded && (
+        {(!isImageLoaded || !artist.profile_image) && (
           <Skeleton className="absolute top-0 left-0 w-full h-full z-0 rounded-none" />
         )}
-        <Image
-          removeWrapper
-          src={artist.profile_image}
-          alt={artist.name}
-          className={`w-full h-full object-cover rounded-none z-0 transition-transform group-hover/card:scale-105 ${isImageLoaded ? 'opacity-100' : 'opacity-0'
-            } transition-opacity duration-300`}
-          onLoad={() => setIsImageLoaded(true)}
-        />
+        {artist.profile_image && (
+          <Image
+            removeWrapper
+            src={artist.profile_image}
+            alt={artist.name}
+            className={`w-full h-full object-cover rounded-none z-0 transition-transform group-hover/card:scale-105 ${isImageLoaded ? 'opacity-100' : 'opacity-0'
+              } transition-opacity duration-300`}
+            onLoad={() => setIsImageLoaded(true)}
+          />
+        )}
       </CardBody>
       <CardFooter className="absolute z-10 bottom-0 flex justify-center items-center w-full p-4">
         <h2 className="text-xl font-semibold">{artist.name}</h2>

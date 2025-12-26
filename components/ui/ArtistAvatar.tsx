@@ -19,7 +19,9 @@ export default function ArtistAvatar({ artist, size, isRounded = true, isBordere
       <Avatar
         isBordered={isBordered}
         radius={isRounded ? "lg" : "none"}
-        src={artist.profile_image}
+        src={artist.profile_image ?? undefined}
+        name={artist.name}
+        showFallback
         alt={artist.name}
         className={`transition-transform duration-300  object-contain ${size === "sm" ? "w-6 h-6" : size === "lg" ? "w-16 h-16 group-hover:scale-105" : "w-10 h-10 group-hover:scale-105"}`}
       />

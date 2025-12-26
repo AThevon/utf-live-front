@@ -4,7 +4,13 @@
       "Bash(find /Users/athevon/projects/utf-live/back/app /Users/athevon/projects/utf-live/back/routes /Users/athevon/projects/utf-live/back/config /Users/athevon/projects/utf-live/back/bootstrap -name \"*.php\" -exec sh -c 'head -c 5 \"\"$1\"\" | grep -qv \"\"<?php\"\" && echo \"\"Possible issue: $1\"\"' _ {} ;)",
       "Bash(curl -s https://api.undertheflow.com/api/artists)",
       "Bash(xxd:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(node:*)",
+      "Bash(npm run build:*)",
+      "Bash(pkill:*)",
+      "Bash(cat:*)",
+      "Bash(curl:*)",
+      "Bash(aws s3 cp:*)"
     ]
   }
 }

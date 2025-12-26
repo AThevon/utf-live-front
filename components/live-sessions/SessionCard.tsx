@@ -30,19 +30,21 @@ export default function SessionCard({ session }: SessionCardProps) {
       className="group/card w-full relative flex flex-row transition-all bg-gradient-to-br from-zinc-900 to-zinc-950 text-white"
     >
       <div className="p-0 flex-1 grid grid-cols-1 md:grid-cols-2 place-items-center md:place-items-stretch">
-        {!isImageLoaded && (
+        {(!isImageLoaded || !session.thumbnail_url) && (
           <>
             <Skeleton className="hidden md:block absolute left-0 top-0 w-[42%] h-full z-0 rounded-none clipped-image" />
             <Skeleton className="block md:hidden w-1/2 mx-auto my-5 h-[310px] z-0" />
           </>
         )}
-        <Image
-          src={session.thumbnail_url}
-          alt=""
-          isBlurred
-          className={`object-cover md:-translate-x-3 xl:group-hover/card:translate-x-0 h-full w-full md:min-h-[550px] lg:min-h-[430px] max-h-[350px] md:max-h-full lg:max-h-[430px] md:p-0 rounded-lg overflow-hidden md:rounded-none md:clipped-image  ${isImageLoaded ? 'opacity-100 p-5' : 'opacity-0'} transition-opacity duration-300`}
-          onLoad={() => setIsImageLoaded(true)}
-        />
+        {session.thumbnail_url && (
+          <Image
+            src={session.thumbnail_url}
+            alt=""
+            isBlurred
+            className={`object-cover md:-translate-x-3 xl:group-hover/card:translate-x-0 h-full w-full md:min-h-[550px] lg:min-h-[430px] max-h-[350px] md:max-h-full lg:max-h-[430px] md:p-0 rounded-lg overflow-hidden md:rounded-none md:clipped-image  ${isImageLoaded ? 'opacity-100 p-5' : 'opacity-0'} transition-opacity duration-300`}
+            onLoad={() => setIsImageLoaded(true)}
+          />
+        )}
 
         <div className="flex flex-col text-start w-full gap-2 p-4">
           <div className="p-2 flex flex-col items-center md:items-end gap-1 text-center md:text-end">

@@ -12,15 +12,17 @@ type MusicContainerProps = {
 export default function MusicContainer({ musicServices }: MusicContainerProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  if (!musicServices || musicServices.length === 0) return null;
+  const validServices = musicServices?.filter(s => s.icon_url) || [];
 
-  const musicService = musicServices[activeIndex];
+  if (validServices.length === 0) return null;
+
+  const musicService = validServices[activeIndex];
 
   return (
     <div className="flex flex-col md:flex-row gap-2">
       {/* Plateformes sous forme de grid dynamique */}
-      <ul className={`relative flex mx-auto sm:mx-0 md:grid auto-cols-auto grid-flow-row gap-2 md:w-[12rem] ${musicServices.length > 1 ? "md:grid-cols-2" : ""} `}>
-        {musicServices.map((service, index) => {
+      <ul className={`relative flex mx-auto sm:mx-0 md:grid auto-cols-auto grid-flow-row gap-2 md:w-[12rem] ${validServices.length > 1 ? "md:grid-cols-2" : ""} `}>
+        {validServices.map((service, index) => {
           const isActive = index === activeIndex;
           return (
             <motion.li
@@ -42,7 +44,7 @@ export default function MusicContainer({ musicServices }: MusicContainerProps) {
 
               {/* contenu */}
               <div className="z-10 flex flex-col items-center justify-center gap-2">
-                <Image src={service.icon_url} alt={service.name} width={30} height={30} />
+                <Image src={service.icon_url!} alt={service.name} width={30} height={30} />
               </div>
             </motion.li>
           );

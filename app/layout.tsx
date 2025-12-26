@@ -2,12 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import Header from "@/components/layout/Header";
-import PageTransition from "@/components/layout/PageTransition";
-import Footer from "@/components/layout/Footer";
-import { LayoutGroup } from "framer-motion";
-import IntroOverlay from "@/components/layout/IntroOverlay";
-import { GoogleAnalytics  } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const fontSans = Geist({
   variable: "--font-custom-sans",
@@ -50,14 +45,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`${fontSans.variable} ${fontSecondary.variable} ${fontMono.variable} dark font-sans text-foreground bg-background min-h-screen`}>
         <Providers>
-        <LayoutGroup>
-          <IntroOverlay />
-          <Header />
-          <PageTransition>
-            {children}
-          </PageTransition>
-          <Footer />
-        </LayoutGroup>
+          {children}
         </Providers>
       </body>
       <GoogleAnalytics gaId="G-V09HM6CECL" />
