@@ -84,8 +84,14 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="text-center text-xs mt-10">
-        © {new Date().getFullYear()} UTF Live. Tous droits réservés.
+      <div className="text-center text-xs mt-10 space-y-2">
+        <p>© {new Date().getFullYear()} UTF Live. Tous droits réservés.</p>
+        <Link
+          href="/mentions-legales"
+          className="text-zinc-500 hover:text-zinc-300 transition-colors"
+        >
+          Mentions légales
+        </Link>
       </div>
     </motion.footer>
   );
