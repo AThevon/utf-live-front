@@ -113,7 +113,7 @@ export default async function LiveSession({ params }: LiveSessionProps) {
               <div key={p.id} className="p-5 rounded-xl transition border border-zinc-700/40 flex justify-between items-center">
                 <p className="font-semibold text-lg">{p.name}</p>
                 <div className="flex gap-2">
-                  {p.platforms.map((platform) => (
+                  {p.platforms.filter(platform => platform.icon_url).map((platform) => (
                     <TooltipWrapper key={platform.slug} content={platform.name}>
                       <Link
                         href={platform.url}
@@ -122,7 +122,7 @@ export default async function LiveSession({ params }: LiveSessionProps) {
                         className="p-[5px] rounded-full bg-zinc-800/50 hover:bg-zinc-700/60 border border-zinc-700/40 transition"
                       >
                         <Image
-                          src={platform.icon_url}
+                          src={platform.icon_url!}
                           alt={platform.name}
                           width={20}
                           height={20}

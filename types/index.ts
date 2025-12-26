@@ -2,8 +2,8 @@ export type Artist = {
   id: number
   name: string
   slug: string
-  bio: string
-  profile_image: string
+  bio: string | null
+  profile_image: string | null
   images: ImageType[]
   platforms: {
     social: Platform[];
@@ -18,17 +18,17 @@ export type ArtistList = {
   id: number;
   name: string;
   slug: string;
-  bio: string;
-  profile_image: string;
+  bio: string | null;
+  profile_image: string | null;
 };
 
 export type ArtistCompact = {
   id: number;
   name: string;
   slug: string;
-  bio: string;
-  profile_image: string;
-  thumbnail_url: string;
+  bio: string | null;
+  profile_image: string | null;
+  thumbnail_url: string | null;
   platforms: {
     social: Platform[];
     music: Platform[];
@@ -56,7 +56,7 @@ export type LiveSessionList = {
   genre: string
   video_url: string
   published_at: string | null
-  thumbnail_url: string
+  thumbnail_url: string | null
   artist: ArtistList
 }
 
@@ -71,7 +71,7 @@ export type ImageType = {
 export type Platform = {
   name: string
   slug: string
-  icon_url: string
+  icon_url: string | null
   url: string
 }
 

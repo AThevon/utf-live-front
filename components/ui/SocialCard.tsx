@@ -11,7 +11,7 @@ type SocialCardProps = {
 
 
 export default function SocialCard({ platform }: SocialCardProps) {
-  if (!platform) return null;
+  if (!platform || !platform.icon_url) return null;
 
   return (
     <TooltipWrapper content={platform.name}>
@@ -23,7 +23,7 @@ export default function SocialCard({ platform }: SocialCardProps) {
         className="flex items-center gap-3 bg-zinc-800/50 hover:bg-zinc-700/60 transition border border-zinc-700/40 px-4 py-7 text-white/90 hover:text-white group"
       >
         <Image
-          src={platform.icon_url}
+          src={platform.icon_url!}
           alt={platform.name}
           className="w-6 h-6 opacity-90 rounded-none"
         />
